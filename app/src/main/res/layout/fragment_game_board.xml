@@ -16,23 +16,17 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/.50V"
+            android:id="@+id/VertGuide50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5"/>
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/.70H"
+            android:id="@+id/HorizGuide70"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.7"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/.10H"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1"/>
 
         <Button
             android:id="@+id/returnToMenuButton"
@@ -40,9 +34,9 @@
             android:layout_height="wrap_content"
             android:text="Return"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/.50V"
+            app:layout_constraintEnd_toStartOf="@id/VertGuide50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/.70H"/>
+            app:layout_constraintTop_toTopOf="@+id/HorizGuide70"/>
 
         <Button
                 android:id="@+id/tempButton"
@@ -51,8 +45,8 @@
                 android:text="tempButton"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/.50V"
-                app:layout_constraintTop_toTopOf="@id/.70H"/>
+                app:layout_constraintStart_toEndOf="@id/VertGuide50"
+                app:layout_constraintTop_toTopOf="@id/HorizGuide70"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -64,25 +58,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/.33V"
+            android:id="@+id/VertGridLine33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.33"/>
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/.66V"
+            android:id="@+id/VertGridLine66"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.66"/>
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/.33H"
+            android:id="@+id/HorizGridLine33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.33"/>
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/.66H"
+            android:id="@+id/HorizGridLine66"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -93,80 +87,80 @@
             android:layout_height="wrap_content"
             android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/.33V"
+            app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/.33H"/>
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"/>
         <Button
             android:id="@+id/topCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
-            app:layout_constraintStart_toStartOf="@+id/.33V"
-            app:layout_constraintEnd_toEndOf="@+id/.66V"
+            app:layout_constraintStart_toStartOf="@id/VertGridLine33"
+            app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/.33H"/>
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"/>
         <Button
             android:id="@+id/topRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
-            app:layout_constraintStart_toStartOf="@+id/.66V"
+            app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/.33H"/>
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"/>
         <Button
             android:id="@+id/midLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/.33V"
-            app:layout_constraintTop_toTopOf="@+id/.33H"
-            app:layout_constraintBottom_toBottomOf="@+id/.66H"/>
+            app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
+            app:layout_constraintTop_toTopOf="@id/HorizGridLine33"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"/>
         <Button
             android:id="@+id/midCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
-            app:layout_constraintStart_toStartOf="@+id/.33V"
-            app:layout_constraintEnd_toEndOf="@+id/.66V"
-            app:layout_constraintTop_toTopOf="@+id/.33H"
-            app:layout_constraintBottom_toBottomOf="@+id/.66H"/>
+            app:layout_constraintStart_toStartOf="@id/VertGridLine33"
+            app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
+            app:layout_constraintTop_toTopOf="@id/HorizGridLine33"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"/>
         <Button
             android:id="@+id/midRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
-            app:layout_constraintStart_toStartOf="@+id/.66V"
+            app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/.33H"
-            app:layout_constraintBottom_toBottomOf="@+id/.66H"/>
+            app:layout_constraintTop_toTopOf="@id/HorizGridLine33"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"/>
         <Button
             android:id="@+id/botLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/.33V"
-            app:layout_constraintTop_toTopOf="@+id/.66H"
+            app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
+            app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
             app:layout_constraintBottom_toBottomOf="parent"/>
         <Button
             android:id="@+id/botMid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
-            app:layout_constraintStart_toStartOf="@+id/.33V"
-            app:layout_constraintEnd_toEndOf="@+id/.66V"
-            app:layout_constraintTop_toTopOf="@+id/.66H"
+            app:layout_constraintStart_toStartOf="@id/VertGridLine33"
+            app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
+            app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
             app:layout_constraintBottom_toBottomOf="parent" />
         <Button
             android:id="@+id/botRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
-            app:layout_constraintStart_toStartOf="@+id/.66V"
+            app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/.66H"
+            app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
             app:layout_constraintBottom_toBottomOf="parent" />
 
 
