@@ -69,23 +69,23 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.66"/>
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGridLine33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.33"/>
+            app:layout_constraintGuide_begin="56dp" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGridLine66"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.66"/>
-        <Button
+        <ImageView
             android:id="@+id/topLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
             app:layout_constraintTop_toTopOf="parent"
@@ -149,6 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
+            android:layout_marginLeft="1dp"
             app:layout_constraintStart_toStartOf="@id/VertGridLine33"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
@@ -158,14 +159,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
             app:layout_constraintBottom_toBottomOf="parent" />
-
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
