@@ -13,38 +13,39 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintGuide_percent=".15" />
+        app:layout_constraintGuide_percent=".10" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/right"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintGuide_percent=".85" />
+        app:layout_constraintGuide_percent=".90" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top"
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintGuide_percent=".05" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="37dp" />
 
 
     <View
 
         android:layout_width="match_parent"
+
         android:orientation="horizontal"
         android:layout_height="5dp"
         android:background="@android:color/black"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="130dp"
         app:layout_constraintEnd_toEndOf="@id/left"/>
     <View
 
-        android:layout_width="90dp"
+        android:layout_width="70dp"
         android:orientation="vertical"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_purple"
+        android:background="@android:color/holo_blue_dark"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
 
@@ -55,7 +56,7 @@
         android:layout_width="90dp"
         android:orientation="vertical"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_purple"
+        android:background="@android:color/holo_blue_dark"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/right" />
@@ -64,7 +65,7 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="40dp"
-        android:background="@android:color/holo_purple"
+        android:background="@android:color/holo_blue_dark"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/top"
         app:layout_constraintStart_toStartOf="@id/right" />
@@ -74,7 +75,7 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="40dp"
-        android:background="@android:color/holo_purple"
+        android:background="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/right" />
 
@@ -95,7 +96,7 @@
         android:id="@+id/backbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="60dp"
         android:text="return to main menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/right"
@@ -109,86 +110,98 @@
         app:layout_constraintTop_toBottomOf="@id/top"
         android:layout_marginTop="150dp"
         android:layout_marginBottom="70dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="40dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/first"
             android:textSize="45dp"
+
+            android:paddingTop="5dp"
             android:text="1st"
+            android:gravity="center"
             android:textColor="@android:color/holo_orange_light"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/second"
             android:textSize="30dp"
             android:text="2nd"
-            android:paddingTop="14dp"
+            android:gravity="center"
+            android:paddingTop="13dp"
             android:textColor="@android:color/darker_gray"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/third"
             android:textSize="20dp"
             android:textColor="@android:color/holo_orange_dark"
             android:text="3rd"
+            android:gravity="center"
             android:paddingTop="14dp"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/fourth"
             android:textSize="15dp"
             android:text="4th"
+            android:gravity="center"
             android:paddingTop="14dp"
             android:paddingBottom="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/fifth"
             android:textSize="15dp"
             android:text="5th"
+            android:gravity="center"
             android:paddingTop="14dp"
             android:paddingBottom="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/sixth"
             android:textSize="15dp"
             android:text="6th"
+            android:gravity="center"
             android:paddingTop="14dp"
             android:paddingBottom="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/seventh"
             android:textSize="15dp"
             android:text="7th"
+            android:gravity="center"
             android:paddingTop="14dp"
             android:paddingBottom="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/eighth"
             android:textSize="15dp"
             android:text="8th"
+            android:gravity="center"
             android:paddingTop="14dp"
             android:paddingBottom="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/ninth"
             android:textSize="15dp"
             android:text="9th"
+            android:gravity="center"
             android:paddingTop="14dp"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tenth"
             android:textSize="15dp"
             android:text="10th"
+            android:gravity="center"
             android:paddingTop="16dp"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
@@ -200,20 +213,21 @@
         app:layout_constraintTop_toBottomOf="@id/top"
         android:layout_marginTop="170dp"
         android:layout_marginBottom="70dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="40dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/firstentry"
-            android:gravity="right"
+            android:gravity="left"
             android:textSize="30dp"
-            android:text="name here"
+            android:text="Ja"
+            android:paddingTop="5dp"
             android:textColor="@android:color/holo_orange_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/secondentry"
-            android:gravity="right"
+            android:gravity="left"
             android:textSize="25dp"
             android:text="name here"
             android:textColor="@android:color/darker_gray"
@@ -223,8 +237,8 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/thirdentry"
-            android:gravity="right"
-            android:textSize="15dp"
+            android:gravity="left"
+            android:textSize="20dp"
             android:text="name here"
             android:textColor="@android:color/holo_orange_dark"
             android:paddingTop="17dp"
@@ -233,7 +247,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/fourthentry"
-            android:gravity="right"
+            android:gravity="left"
             android:textSize="15dp"
             android:text="name here"
             android:paddingTop="17dp"
@@ -243,7 +257,7 @@
 
         <TextView
             android:id="@+id/fifthentry"
-            android:gravity="right"
+            android:gravity="left"
             android:textSize="15dp"
             android:paddingTop="17dp"
             android:paddingBottom="5dp"
@@ -252,7 +266,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/sixthentry"
-            android:gravity="right"
+            android:gravity="left"
             android:textSize="15dp"
             android:paddingTop="17dp"
             android:paddingBottom="5dp"
@@ -261,7 +275,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/seventhentry"
-            android:gravity="right"
+            android:gravity="left"
             android:textSize="15dp"
             android:paddingTop="17dp"
             android:paddingBottom="5dp"
@@ -270,7 +284,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/eighthentry"
-            android:gravity="right"
+            android:gravity="left"
             android:textSize="15dp"
             android:paddingTop="17dp"
             android:paddingBottom="5dp"
@@ -279,7 +293,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/ninthentry"
-            android:gravity="right"
+            android:gravity="left"
             android:textSize="15dp"
             android:paddingTop="17dp"
             android:paddingBottom="5dp"
@@ -288,11 +302,20 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tenthentry"
-            android:gravity="right"
+            android:gravity="left"
             android:textSize="15dp"
             android:paddingTop="17dp"
             android:text="name here"
             android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/spacer"
+            android:gravity="left"
+            android:textSize="30dp"
+            android:text="                   "
+            android:paddingTop="5dp"
+            android:textColor="@android:color/holo_orange_light"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
