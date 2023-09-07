@@ -151,165 +151,165 @@
             app:layout_constraintVertical_bias="0.46"
             app:srcCompat="@drawable/grid4x4" />
 
-        <Button
+        <ImageView
             android:id="@+id/topLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/VertGridLine27"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"/>
+            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/topLeftCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
             app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28" />
+            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/topRightCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28" />
+            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/topRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/vertGridLine75"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28" />
+            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/topMidLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/VertGridLine27"
             app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
-            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50" />
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/topMidLeftCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
             app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
             app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
-            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50" />
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/topMidRightCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
             app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
-            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50" />
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/topMidRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/vertGridLine75"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
-            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50" />
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/botMidLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/VertGridLine27"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
-            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72" /> />
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/botMidLeftCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
             app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
-            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72" /> />
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/botMidRightCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
-            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72" />
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/botMidRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/vertGridLine75"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
-            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72" />
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/botLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/VertGridLine27"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/botLeftCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
             app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/botRightCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/transparent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/botRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="@+id/vertGridLine75"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/transparent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
