@@ -139,7 +139,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <ImageView
-            android:id="@+id/grid3x3"
+            android:id="@+id/grid4x4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="Start"
