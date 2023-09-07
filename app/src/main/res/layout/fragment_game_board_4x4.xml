@@ -56,6 +56,13 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.20" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizGuide08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.11" />
+
         <Button
             android:id="@+id/Undo"
             android:layout_width="wrap_content"
@@ -63,6 +70,18 @@
             android:text="Undo Move"
             app:layout_constraintBottom_toTopOf="@+id/HorizGuide20"
             app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizGuide08" />
+
+        <TextView
+            android:id="@+id/Status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player X's Turn"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/horizGuide08"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
