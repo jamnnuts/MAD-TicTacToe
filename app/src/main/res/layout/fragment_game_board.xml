@@ -22,11 +22,11 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5"/>
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/HorizGuide70"
+            android:id="@+id/HorizGuide75"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.7"/>
+            app:layout_constraintGuide_percent="0.75"/>
 
         <Button
             android:id="@+id/returnToMenuButton"
@@ -36,8 +36,53 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/VertGuide50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/HorizGuide70"/>
+            app:layout_constraintTop_toTopOf="@+id/HorizGuide75"/>
 
+        <Button
+            android:id="@+id/tempButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tempButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/VertGuide50"
+            app:layout_constraintTop_toTopOf="@id/HorizGuide75"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HorizGuide25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizGuide15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <Button
+            android:id="@+id/Undo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Undo Move"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGuide25"
+            app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizGuide15" />
+
+        <TextView
+            android:id="@+id/Status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player X's Turn"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/horizGuide15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -48,111 +93,130 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VertGridLine33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.33"/>
+            app:layout_constraintGuide_percent="0.35" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VertGridLine66"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.66"/>
+            app:layout_constraintGuide_begin="220dp" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGridLine33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.33"/>
+            app:layout_constraintGuide_percent="0.34" />
+      
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGridLine66"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.66"/>
-        <Button
-            android:id="@+id/button0"
+            app:layout_constraintGuide_percent="0.65" />
+        <ImageView
+            android:id="@+id/grid3x3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:contentDescription="Start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.46"
+            app:srcCompat="@drawable/grid3x3" />
+        <ImageView
+            android:id="@+id/topLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"/>
-        <Button
-            android:id="@+id/button1"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"
+            app:srcCompat="@drawable/transparent"/>
+        <ImageView
+            android:id="@+id/topCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             app:layout_constraintStart_toStartOf="@id/VertGridLine33"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"/>
-        <Button
-            android:id="@+id/button2"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"
+            app:srcCompat="@drawable/transparent"/>
+        <ImageView
+            android:id="@+id/topRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"/>
-        <Button
-            android:id="@+id/button3"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"
+            app:srcCompat="@drawable/transparent"/>
+        <ImageView
+            android:id="@+id/midLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine33"
-            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"/>
-        <Button
-            android:id="@+id/button4"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"
+            app:srcCompat="@drawable/transparent"/>
+        <ImageView
+            android:id="@+id/midCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             app:layout_constraintStart_toStartOf="@id/VertGridLine33"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine33"
-            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"/>
-        <Button
-            android:id="@+id/button5"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"
+            app:srcCompat="@drawable/transparent"/>
+        <ImageView
+            android:id="@+id/midRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine33"
-            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"/>
-        <Button
-            android:id="@+id/button6"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"
+            app:srcCompat="@drawable/transparent"/>
+        <ImageView
+            android:id="@+id/botLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-        <Button
-            android:id="@+id/button7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/transparent"/>
+        <ImageView
+            android:id="@+id/botMid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             app:layout_constraintStart_toStartOf="@id/VertGridLine33"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
-            app:layout_constraintBottom_toBottomOf="parent" />
-        <Button
-            android:id="@+id/button8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/transparent"/>
+        <ImageView
+            android:id="@+id/botRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/transparent"/>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
