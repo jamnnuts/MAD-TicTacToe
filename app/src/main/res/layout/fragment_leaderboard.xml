@@ -225,16 +225,18 @@
             android:textColor="@android:color/holo_orange_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <TextView
             android:id="@+id/secondentry"
-            android:gravity="left"
-            android:textSize="25dp"
-            android:text="name here"
-            android:textColor="@android:color/darker_gray"
-            android:paddingTop="17dp"
-
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingTop="17dp"
+            android:text="name here"
+
+            android:textColor="@android:color/darker_gray"
+            android:textSize="25dp" />
+
         <TextView
             android:id="@+id/thirdentry"
             android:gravity="left"

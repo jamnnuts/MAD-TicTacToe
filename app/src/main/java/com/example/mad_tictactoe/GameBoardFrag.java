@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -72,20 +71,22 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_game_board, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_game_board3x3, container, false);
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
-        Button returnButton = rootView.findViewById(R.id.returnToMenuButton);
+        Button returnButton = rootView.findViewById(R.id.returnToMenuButton3x3);
+        Button resetButton = rootView.findViewById(R.id.resetButton3x3);
 
+        gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
 
-        buttonList[0] = rootView.findViewById(R.id.button0);
-        buttonList[1] = rootView.findViewById(R.id.button1);
-        buttonList[2] = rootView.findViewById(R.id.button2);
-        buttonList[3] = rootView.findViewById(R.id.button3);
-        buttonList[4] = rootView.findViewById(R.id.button4);
-        buttonList[5] = rootView.findViewById(R.id.button5);
-        buttonList[6] = rootView.findViewById(R.id.button6);
-        buttonList[7] = rootView.findViewById(R.id.button7);
-        buttonList[8] = rootView.findViewById(R.id.button8);
+        buttonList[0] = rootView.findViewById(R.id.button3x3_0);
+        buttonList[1] = rootView.findViewById(R.id.button3x3_1);
+        buttonList[2] = rootView.findViewById(R.id.button3x3_2);
+        buttonList[3] = rootView.findViewById(R.id.button3x3_3);
+        buttonList[4] = rootView.findViewById(R.id.button3x3_4);
+        buttonList[5] = rootView.findViewById(R.id.button3x3_5);
+        buttonList[6] = rootView.findViewById(R.id.button3x3_6);
+        buttonList[7] = rootView.findViewById(R.id.button3x3_7);
+        buttonList[8] = rootView.findViewById(R.id.button3x3_8);
 
 
         for (int i = 0; i < buttonList.length; i++) {
@@ -102,6 +103,17 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
             }
         });
 
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rounds = 0;
+                gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
+                for (int i = 0; i < buttonList.length; i++) {
+                    buttonList[i].setText("");
+                }
+            }
+        });
+
 
         return rootView;
     }
@@ -115,7 +127,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
         String buttonID = view.getResources().getResourceEntryName(view.getId());
 
-        int gameStatePointer = Integer.parseInt(buttonID.substring(buttonID.length() - 1, buttonID.length()));
+        int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
 
         if (playerOneActive) {
             ((Button) view).setText("X");
@@ -123,7 +135,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
             gamestate[gameStatePointer] = 0;
         } else {
             ((Button) view).setText("O");
-            ((Button) view).setTextColor(Color.parseColor("#FFFFFF"));
+            ((Button) view).setTextColor(Color.parseColor("#0000FF"));
             gamestate[gameStatePointer] = 1;
 
         }

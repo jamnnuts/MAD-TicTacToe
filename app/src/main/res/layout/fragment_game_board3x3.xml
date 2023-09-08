@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/frameLayout2"
+    android:id="@+id/GameBoard3x3MainConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameBoardFrag">
@@ -29,7 +29,7 @@
             app:layout_constraintGuide_percent="0.75"/>
 
         <Button
-            android:id="@+id/returnToMenuButton"
+            android:id="@+id/returnToMenuButton3x3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Return"
@@ -39,14 +39,14 @@
             app:layout_constraintTop_toTopOf="@+id/HorizGuide75"/>
 
         <Button
-            android:id="@+id/tempButton"
+            android:id="@+id/resetButton3x3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="tempButton"
+            android:text="Reset"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/VertGuide50"
-            app:layout_constraintTop_toTopOf="@id/HorizGuide75"/>
+            app:layout_constraintTop_toTopOf="@id/HorizGuide75" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGuide25"
@@ -128,92 +128,90 @@
             android:contentDescription="Start"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.46"
             app:srcCompat="@drawable/grid3x3" />
-        <ImageView
-            android:id="@+id/topLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/button3x3_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"
-            app:srcCompat="@drawable/transparent"/>
-        <ImageView
-            android:id="@+id/topCentre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33" />
+        <Button
+            android:id="@+id/button3x3_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
             app:layout_constraintStart_toStartOf="@id/VertGridLine33"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"
-            app:srcCompat="@drawable/transparent"/>
-        <ImageView
-            android:id="@+id/topRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33" />
+        <Button
+            android:id="@+id/button3x3_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/HorizGridLine33"
-            app:srcCompat="@drawable/transparent"/>
-        <ImageView
-            android:id="@+id/midLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/button3x3_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine33"
             app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"
-            app:srcCompat="@drawable/transparent"/>
-        <ImageView
-            android:id="@+id/midCentre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/button3x3_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@id/VertGridLine33"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine33"
             app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"
-            app:srcCompat="@drawable/transparent"/>
-        <ImageView
-            android:id="@+id/midRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/button3x3_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine33"
             app:layout_constraintBottom_toBottomOf="@id/HorizGridLine66"
-            app:srcCompat="@drawable/transparent"/>
-        <ImageView
-            android:id="@+id/botLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/button3x3_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine33"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/transparent"/>
-        <ImageView
-            android:id="@+id/botMid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/button3x3_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@id/VertGridLine33"
             app:layout_constraintEnd_toEndOf="@id/VertGridLine66"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/transparent"/>
-        <ImageView
-            android:id="@+id/botRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/button3x3_8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@id/VertGridLine66"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/HorizGridLine66"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/transparent"/>
+            android:background="@android:color/transparent"/>
 
 
 
