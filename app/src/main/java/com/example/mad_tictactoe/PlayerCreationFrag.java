@@ -9,13 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MainMenuFrag#newInstance} factory method to
+ * Use the {@link PlayerCreationFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainMenuFrag extends Fragment {
+public class PlayerCreationFrag extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +27,7 @@ public class MainMenuFrag extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public MainMenuFrag() {
+    public PlayerCreationFrag() {
         // Required empty public constructor
     }
 
@@ -36,11 +37,11 @@ public class MainMenuFrag extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment mainMenuFrag.
+     * @return A new instance of fragment player_creation.
      */
     // TODO: Rename and change types and number of parameters
-    public static MainMenuFrag newInstance(String param1, String param2) {
-        MainMenuFrag fragment = new MainMenuFrag();
+    public static PlayerCreationFrag newInstance(String param1, String param2) {
+        PlayerCreationFrag fragment = new PlayerCreationFrag();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,30 +61,35 @@ public class MainMenuFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main_menu, container, false);
-
+        View rootView = inflater.inflate(R.layout.fragment_player_creation, container, false);
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
-        Button playButton = rootView.findViewById(R.id.playButton);
-        Button createPlayerButton = rootView.findViewById(R.id.playerCreationButton);
+        Button returnButton = rootView.findViewById(R.id.returnButton2);
+        Button saveButton = rootView.findViewById(R.id.saveButton);
+        EditText playerName = rootView.findViewById(R.id.playerName);
 
-        playButton.setOnClickListener(new View.OnClickListener() {
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               Player tempPlayer1 = sessionData.getPlayerOne().getValue();
+               Player tempPlayer2 = sessionData.getPlayerTwo().getValue();
 
-                sessionData.setClickedFragment(2);
-                //Need to implement a way to grab the String inputted in the 'player name' field and create a Player class out of it.
+               /*if(tempPlayer1.getPlayerName() == "default") {
+                   tempPlayer1.setPlayerName(playerName.toString());
+               }
+               else {
+                   tempPlayer2.setPlayerName(playerName.toString());
+               } */
             }
         });
-
-        createPlayerButton.setOnClickListener(new View.OnClickListener() {
+        returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                sessionData.setClickedFragment(3);
-                //Need to implement a way to grab the String inputted in the 'player name' field and create a Player class out of it.
+                sessionData.setClickedFragment(1);
             }
         });
 
         return rootView;
     }
+
 }
