@@ -1,5 +1,6 @@
 package com.example.mad_tictactoe;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,22 +10,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GameBoardFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GameBoardFrag extends Fragment {
+public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private static final int[][] winningPositions = {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8},{0,4,8},{2,4,6}};
+    private  int[] gamestate = {2,2,2,2,2,2,2,2,2};
+    private Button[] buttonList = new Button[9];
+
+    private int rounds;
+
+    private boolean playerOneActive;
 
     public GameBoardFrag() {
         // Required empty public constructor
@@ -64,6 +76,25 @@ public class GameBoardFrag extends Fragment {
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton);
 
+
+        buttonList[0] = rootView.findViewById(R.id.button0);
+        buttonList[1] = rootView.findViewById(R.id.button1);
+        buttonList[2] = rootView.findViewById(R.id.button2);
+        buttonList[3] = rootView.findViewById(R.id.button3);
+        buttonList[4] = rootView.findViewById(R.id.button4);
+        buttonList[5] = rootView.findViewById(R.id.button5);
+        buttonList[6] = rootView.findViewById(R.id.button6);
+        buttonList[7] = rootView.findViewById(R.id.button7);
+        buttonList[8] = rootView.findViewById(R.id.button8);
+
+
+        for (int i = 0; i < buttonList.length; i++) {
+            buttonList[i].setOnClickListener(this);
+        }
+
+        playerOneActive = true;
+        rounds = 0;
+
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +102,62 @@ public class GameBoardFrag extends Fragment {
             }
         });
 
+
         return rootView;
+    }
+    @Override
+    public void onClick(View view) {
+        if (!((Button) view).getText().toString().equals("")) {
+            return;
+        } else if (checkWinner()) {
+            return;
+        }
+
+        String buttonID = view.getResources().getResourceEntryName(view.getId());
+
+        int gameStatePointer = Integer.parseInt(buttonID.substring(buttonID.length() - 1, buttonID.length()));
+
+        if (playerOneActive) {
+            ((Button) view).setText("X");
+            ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+            gamestate[gameStatePointer] = 0;
+        } else {
+            ((Button) view).setText("O");
+            ((Button) view).setTextColor(Color.parseColor("#FFFFFF"));
+            gamestate[gameStatePointer] = 1;
+
+        }
+
+        rounds++;
+
+        if (checkWinner()) {
+            if (playerOneActive) {
+                Toast.makeText(getActivity(), "Player One wins!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "Player Two wins!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if (rounds == 9) {
+            Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            playerOneActive = !playerOneActive;
+        }
+
+    }
+
+    private boolean checkWinner() {
+        boolean winnerDetected = false;
+        for (int[] winningPositions : winningPositions) {
+            if (gamestate[winningPositions[0]] == gamestate[winningPositions[1]] &&
+                    gamestate[winningPositions[1]] == gamestate[winningPositions[2]] &&
+                    gamestate[winningPositions[0]] != 2) {
+
+                winnerDetected = true;
+
+            }
+        }
+
+        return winnerDetected;
     }
 }

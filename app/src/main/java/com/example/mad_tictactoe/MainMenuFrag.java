@@ -38,6 +38,7 @@ public class MainMenuFrag extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment mainMenuFrag.
      */
+
     // TODO: Rename and change types and number of parameters
     public static MainMenuFrag newInstance(String param1, String param2) {
         MainMenuFrag fragment = new MainMenuFrag();
