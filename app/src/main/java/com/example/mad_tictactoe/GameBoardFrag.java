@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.Stack;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GameBoardFrag#newInstance} factory method to
@@ -32,6 +34,8 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private static final int[][] winningPositions = {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8},{0,4,8},{2,4,6}};
     private  int[] gamestate = {2,2,2,2,2,2,2,2,2};
     private Button[] buttonList = new Button[9];
+
+    private Stack<Integer> undoMoves = new Stack<Integer>();
 
     private int rounds;
 
@@ -75,6 +79,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton3x3);
         Button resetButton = rootView.findViewById(R.id.resetButton3x3);
+        Button undoButton = rootView.findViewById(R.id.UndoButton);
 
         gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
 
@@ -114,6 +119,24 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
             }
         });
 
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (rounds == 0) {
+                    return;
+                }
+                else if (checkWinner()) {
+                    return;
+                }
+
+                int lastMove = undoMoves.pop();
+                buttonList[lastMove].setText("");
+                gamestate[lastMove] = 2;
+                rounds--;
+
+            }
+        });
+
 
         return rootView;
     }
@@ -133,10 +156,13 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
             ((Button) view).setText("X");
             ((Button) view).setTextColor(Color.parseColor("#FFA500"));
             gamestate[gameStatePointer] = 0;
+            undoMoves.push(gameStatePointer);
+
         } else {
             ((Button) view).setText("O");
             ((Button) view).setTextColor(Color.parseColor("#0000FF"));
             gamestate[gameStatePointer] = 1;
+            undoMoves.push(gameStatePointer);
 
         }
 

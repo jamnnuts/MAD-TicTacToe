@@ -7,13 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".GameBoardFrag">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VertGuide50"
@@ -22,11 +15,11 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5"/>
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/HorizGuide75"
+            android:id="@+id/HorizGuide85"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.75"/>
+            app:layout_constraintGuide_percent="0.85"/>
 
         <Button
             android:id="@+id/returnToMenuButton3x3"
@@ -36,7 +29,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/VertGuide50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/HorizGuide75"/>
+            app:layout_constraintTop_toTopOf="@+id/HorizGuide85"/>
 
         <Button
             android:id="@+id/resetButton3x3"
@@ -46,7 +39,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/VertGuide50"
-            app:layout_constraintTop_toTopOf="@id/HorizGuide75" />
+            app:layout_constraintTop_toTopOf="@id/HorizGuide85" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGuide25"
@@ -63,7 +56,7 @@
             app:layout_constraintGuide_percent="0.15" />
 
         <Button
-            android:id="@+id/Undo"
+            android:id="@+id/UndoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Undo Move"
@@ -84,43 +77,42 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/HorizGuide25"
+        app:layout_constraintBottom_toTopOf="@id/HorizGuide85">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VertGridLine33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.35" />
+            app:layout_constraintGuide_percent="0.33" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VertGridLine66"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="220dp" />
+            app:layout_constraintGuide_percent="0.66" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGridLine33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.34" />
+            app:layout_constraintGuide_percent="0.33" />
       
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGridLine66"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.65" />
+            app:layout_constraintGuide_percent="0.66" />
         <ImageView
             android:id="@+id/grid3x3"
             android:layout_width="wrap_content"
