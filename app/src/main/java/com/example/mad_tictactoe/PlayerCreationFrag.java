@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,20 +68,17 @@ public class PlayerCreationFrag extends Fragment {
         Button saveButton = rootView.findViewById(R.id.saveButton);
         EditText playerName = rootView.findViewById(R.id.playerName);
 
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Player tempPlayer1 = sessionData.getPlayerOne();
-               Player tempPlayer2 = sessionData.getPlayerTwo();
 
-               if(tempPlayer1.getPlayerName() == "default") {
-                   tempPlayer1.setPlayerName(playerName.toString());
-                   sessionData.setPlayerOne(tempPlayer1);
+               if(sessionData.playerOne.getValue().getPlayerName() == "default") {
+                   sessionData.playerOne.getValue().setPlayerName(playerName.getText().toString());
+                   Toast.makeText(getActivity(), "Player created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
                }
                else {
-                   tempPlayer2.setPlayerName(playerName.toString());
-                   sessionData.setPlayerTwo(tempPlayer2);
+                   sessionData.playerTwo.getValue().setPlayerName(playerName.getText().toString());
+                   Toast.makeText(getActivity(), "Player created: " + sessionData.playerTwo.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
                }
             }
         });
