@@ -14,19 +14,19 @@ public class SessionDataViewModel extends ViewModel {
         playerOne = new MutableLiveData<Player>();
         playerTwo = new MutableLiveData<Player>();
 
-
         clickedFragment.setValue(0);
+        playerOne.setValue(new Player());
+        playerTwo.setValue(new Player());
     }
 
     public int getClickedFragment() {
         return clickedFragment.getValue();
     }
-
     public void setClickedFragment(int value) {
         clickedFragment.setValue(value);
     }
-    public MutableLiveData<Player> getPlayerOne() {return playerOne;}
-    public void setPlayerOne(MutableLiveData<Player> playerOne) {this.playerOne = playerOne;}
-    public MutableLiveData<Player> getPlayerTwo() {return playerTwo;}
-    public void setPlayerTwo(MutableLiveData<Player> playerTwo) {this.playerTwo = playerTwo;}
+    public Player getPlayerOne() {return playerOne.getValue();}
+    public void setPlayerOne(Player inPlayer) {playerOne.setValue(inPlayer);}
+    public Player getPlayerTwo() {return playerTwo.getValue();}
+    public void setPlayerTwo(Player inPlayer){playerTwo.setValue(inPlayer);}
 }

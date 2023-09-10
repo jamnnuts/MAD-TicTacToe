@@ -71,15 +71,17 @@ public class PlayerCreationFrag extends Fragment {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Player tempPlayer1 = sessionData.getPlayerOne().getValue();
-               Player tempPlayer2 = sessionData.getPlayerTwo().getValue();
+               Player tempPlayer1 = sessionData.getPlayerOne();
+               Player tempPlayer2 = sessionData.getPlayerTwo();
 
-               /*if(tempPlayer1.getPlayerName() == "default") {
+               if(tempPlayer1.getPlayerName() == "default") {
                    tempPlayer1.setPlayerName(playerName.toString());
+                   sessionData.setPlayerOne(tempPlayer1);
                }
                else {
                    tempPlayer2.setPlayerName(playerName.toString());
-               } */
+                   sessionData.setPlayerTwo(tempPlayer2);
+               }
             }
         });
         returnButton.setOnClickListener(new View.OnClickListener() {
