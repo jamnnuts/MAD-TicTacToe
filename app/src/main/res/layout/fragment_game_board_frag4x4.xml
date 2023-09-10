@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/GameBoard4x4MainConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameBoardFrag4x4">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VertGuide50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HorizGuide80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <Button
+            android:id="@+id/returnToMenuButton4x4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/VertGuide50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/HorizGuide80" />
+
+        <Button
+            android:id="@+id/resetButton4x4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/VertGuide50"
+            app:layout_constraintTop_toTopOf="@id/HorizGuide80" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HorizGuide20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizGuide11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.11" />
+
+        <Button
+            android:id="@+id/Undo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Undo Move"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGuide20"
+            app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizGuide11" />
+
+        <TextView
+            android:id="@+id/Status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player X's Turn"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/horizGuide11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VertGridLine27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.27" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertGridLine75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VertGridLine66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="205dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HorizGridLine72"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.72" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizGridLine28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.28" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HorizGridLine50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/grid4x4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/grid4x4" />
+
+        <Button
+            android:id="@+id/button4x4_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
+            app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/vertGridLine75"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
+            app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
+            app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
+            app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/vertGridLine75"
+            app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
+            app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
+            app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
+            app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/vertGridLine75"
+            app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_13"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
+            app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_14"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
+            app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button4x4_15"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/vertGridLine75"
+            app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
+            android:background="@android:color/transparent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

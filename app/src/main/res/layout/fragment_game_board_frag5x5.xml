@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/GameBoard4x4MainConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameBoardFrag5x5">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VertGuide50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HorizGuide80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <Button
+            android:id="@+id/returnToMenuButton5x5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/VertGuide50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/HorizGuide80" />
+
+        <Button
+            android:id="@+id/resetButton5x5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/VertGuide50"
+            app:layout_constraintTop_toTopOf="@id/HorizGuide80" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HorizGuide20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizGuide10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.10" />
+
+        <Button
+            android:id="@+id/Undo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Undo Move"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGuide20"
+            app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizGuide10" />
+
+        <TextView
+            android:id="@+id/Status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player X's Turn"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/horizGuide10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/HorizGuide80"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/HorizGuide20">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VertGridLine20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VertGridLine60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VertGridLine80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VertGridLine40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HorizGridLine60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.60" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizGridLine80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizGridLine20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HorizGridLine40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.40" />
+        <ImageView
+            android:id="@+id/grid5x5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/grid5x5" />
+        <Button
+            android:id="@+id/button5x5_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/horizGridLine20"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/horizGridLine20"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine40"
+            app:layout_constraintStart_toEndOf="@+id/VertGridLine20"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/horizGridLine20"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine60"
+            app:layout_constraintStart_toEndOf="@+id/VertGridLine40"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/horizGridLine20"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine80"
+            app:layout_constraintStart_toEndOf="@+id/VertGridLine60"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/horizGridLine20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/VertGridLine80"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine40"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine20"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine40"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine40"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine20"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine20"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine40"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine60"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine40"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine20"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine40"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine80"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine60"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine20"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine80"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine20"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine60"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine40"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine60"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine40"
+            app:layout_constraintStart_toEndOf="@+id/VertGridLine20"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine40"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine60"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine60"
+            app:layout_constraintStart_toEndOf="@+id/VertGridLine40"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine40"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_13"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine60"
+            app:layout_constraintEnd_toStartOf="@+id/VertGridLine80"
+            app:layout_constraintStart_toEndOf="@+id/VertGridLine60"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine40"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_14"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGridLine60"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/VertGridLine80"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine40"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_15"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/horizGridLine80"
+            app:layout_constraintEnd_toStartOf="@id/VertGridLine20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine60"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_16"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/horizGridLine80"
+            app:layout_constraintEnd_toStartOf="@id/VertGridLine40"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine20"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine60"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_17"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/horizGridLine80"
+            app:layout_constraintEnd_toStartOf="@id/VertGridLine60"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine40"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine60"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_18"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/horizGridLine80"
+            app:layout_constraintEnd_toStartOf="@id/VertGridLine80"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine60"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine60"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_19"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/horizGridLine80"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine80"
+            app:layout_constraintTop_toBottomOf="@+id/HorizGridLine60"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_20"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/VertGridLine20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine80"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_21"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/VertGridLine40"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine20"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine80"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_22"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/VertGridLine60"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine40"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine80"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_23"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/VertGridLine80"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine60"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine80"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/button5x5_24"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/VertGridLine80"
+            app:layout_constraintTop_toBottomOf="@+id/horizGridLine80"
+            android:background="@android:color/transparent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
