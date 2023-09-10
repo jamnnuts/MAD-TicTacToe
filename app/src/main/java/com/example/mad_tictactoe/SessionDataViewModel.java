@@ -3,37 +3,30 @@ package com.example.mad_tictactoe;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-
-/* GET CLICKED VALUES
-    - 0: default
-    - 1: Main Menu
-    - 2: Load 3x3 Game Board
-    - 3: Load 4x4 Game Board
-    - 4: Load 5x5 Game Board
-    - 5: Load Leaderboard
- */
 public class SessionDataViewModel extends ViewModel {
 
-
     public MutableLiveData<Integer> clickedFragment;
-
-
+    public MutableLiveData<Player> playerOne;
+    public MutableLiveData<Player> playerTwo;
 
     public SessionDataViewModel() {
         clickedFragment = new MutableLiveData<Integer>();
+        playerOne = new MutableLiveData<Player>();
+        playerTwo = new MutableLiveData<Player>();
 
         clickedFragment.setValue(0);
+        playerOne.setValue(new Player());
+        playerTwo.setValue(new Player());
     }
 
     public int getClickedFragment() {
         return clickedFragment.getValue();
     }
-
     public void setClickedFragment(int value) {
         clickedFragment.setValue(value);
     }
-
+    public Player getPlayerOne() {return playerOne.getValue();}
+    public void setPlayerOne(Player inPlayer) {playerOne.setValue(inPlayer);}
+    public Player getPlayerTwo() {return playerTwo.getValue();}
+    public void setPlayerTwo(Player inPlayer){playerTwo.setValue(inPlayer);}
 }

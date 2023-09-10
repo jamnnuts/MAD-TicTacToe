@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     MainMenuFrag mainMenuFragment = new MainMenuFrag();
     GameBoardFrag gameBoardFrag = new GameBoardFrag();
+    PlayerCreationFrag playerCreationFrag = new PlayerCreationFrag();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (sessionData.getClickedFragment() == 2) {
                     loadGameBoard();
+                }
+                else if (sessionData.getClickedFragment() == 3) {
+                    loadPlayerCreation();
                 }
             }
         });
@@ -63,6 +67,18 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             fm.beginTransaction().replace(R.id.first_f_container, gameBoardFrag).commit();
+        }
+    }
+
+    private void loadPlayerCreation() {
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment frag = fm.findFragmentById(R.id.first_f_container);
+
+        if (frag == null) {
+            fm.beginTransaction().add(R.id.first_f_container, playerCreationFrag).commit();
+        }
+        else {
+            fm.beginTransaction().replace(R.id.first_f_container, playerCreationFrag).commit();
         }
     }
 }
