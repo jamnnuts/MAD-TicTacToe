@@ -9,6 +9,7 @@ public class Player{
     public int wins;
     public int losses;
     public int draws;
+
     public Player() {
         this.playerName = "default";
         this.gamesPlayed = 0;

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Stack;
@@ -34,6 +35,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private static final int[][] winningPositions = {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8},{0,4,8},{2,4,6}};
     private  int[] gamestate = {2,2,2,2,2,2,2,2,2};
     private Button[] buttonList = new Button[9];
+    private TextView playerTurn;
 
     private Stack<Integer> undoMoves = new Stack<Integer>();
 
@@ -80,6 +82,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton3x3);
         Button resetButton = rootView.findViewById(R.id.resetButton3x3);
         Button undoButton = rootView.findViewById(R.id.UndoButton);
+
 
         gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
 
@@ -142,6 +145,8 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
+        SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
+
         if (!((Button) view).getText().toString().equals("")) {
             return;
         } else if (checkWinner()) {
@@ -154,13 +159,17 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
         if (playerOneActive) {
             ((Button) view).setText("X");
+            ((Button) view).setTextSize(30);
             ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+
             gamestate[gameStatePointer] = 0;
             undoMoves.push(gameStatePointer);
 
         } else {
             ((Button) view).setText("O");
+            ((Button) view).setTextSize(30);
             ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+
             gamestate[gameStatePointer] = 1;
             undoMoves.push(gameStatePointer);
 
@@ -170,13 +179,31 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
         if (checkWinner()) {
             if (playerOneActive) {
-                Toast.makeText(getActivity(), "Player One wins!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+
+                sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
+                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+
+                sessionData.playerTwo.getValue().setLosses(sessionData.playerTwo.getValue().getLosses() + 1);
+                sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
             } else {
-                Toast.makeText(getActivity(), "Player Two wins!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), sessionData.playerTwo.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+
+                sessionData.playerTwo.getValue().setWins(sessionData.playerTwo.getValue().getWins() + 1);
+                sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
+
+                sessionData.playerOne.getValue().setLosses(sessionData.playerOne.getValue().getLosses() + 1);
+                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
             }
         }
         else if (rounds == 9) {
             Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
+
+            sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
+            sessionData.playerTwo.getValue().setDraws(sessionData.playerTwo.getValue().getDraws() + 1);
+
+            sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+            sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
         }
         else {
             playerOneActive = !playerOneActive;

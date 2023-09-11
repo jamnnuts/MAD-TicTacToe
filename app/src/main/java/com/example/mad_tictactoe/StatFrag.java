@@ -3,10 +3,15 @@ package com.example.mad_tictactoe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +63,38 @@ public class StatFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stat, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_stat, container, false);
+        SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
+        Button returnButton = rootView.findViewById(R.id.returnButton);
+
+        TextView player1Name = rootView.findViewById(R.id.playerName1);
+        TextView player1Wins = rootView.findViewById(R.id.winValue1);
+        TextView player1Lose = rootView.findViewById(R.id.lossValue1);
+        TextView player1Draw = rootView.findViewById(R.id.drawValue1);
+        TextView player1GamesPlayed = rootView.findViewById(R.id.gamesPlayedValue1);
+        TextView player1WLP = rootView.findViewById(R.id.winPercentageValue1);
+
+        player1Name.setText(sessionData.playerOne.getValue().getPlayerName().toString());
+        player1Wins.setText(Integer.toString(sessionData.playerOne.getValue().getWins()));
+        player1Lose.setText(Integer.toString(sessionData.playerOne.getValue().getLosses()));
+        player1Draw.setText(Integer.toString(sessionData.playerOne.getValue().getDraws()));
+        player1GamesPlayed.setText(Integer.toString(sessionData.playerOne.getValue().getGamesPlayed()));
+        if(sessionData.playerOne.getValue().getGamesPlayed() == 0) {
+            player1WLP.setText("_");
+        }
+        else {
+            player1WLP.setText(Integer.toString((sessionData.playerOne.getValue().getWins())/(sessionData.playerOne.getValue().getGamesPlayed()) * 100) + "%");
+        }
+
+
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sessionData.setClickedFragment(1);
+            }
+        });
+
+        return rootView;
     }
 }
