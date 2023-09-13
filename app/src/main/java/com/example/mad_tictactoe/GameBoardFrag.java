@@ -160,7 +160,6 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
             ((Button) view).setText("X");
             ((Button) view).setTextSize(30);
             ((Button) view).setTextColor(Color.parseColor("#FFA500"));
-            updatePlayerText(1,sessionData.playerOne.getValue().getPlayerName().toString());
 
             gamestate[gameStatePointer] = 0;
             undoMoves.push(gameStatePointer);
@@ -169,7 +168,6 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
             ((Button) view).setText("O");
             ((Button) view).setTextSize(30);
             ((Button) view).setTextColor(Color.parseColor("#0000FF"));
-            updatePlayerText(2,sessionData.playerTwo.getValue().getPlayerName().toString());
 
             gamestate[gameStatePointer] = 1;
             undoMoves.push(gameStatePointer);
