@@ -15,8 +15,8 @@ public class SessionDataViewModel extends ViewModel {
         playerTwo = new MutableLiveData<Player>();
 
         clickedFragment.setValue(0);
-        playerOne.setValue(new Player());
-        playerTwo.setValue(new Player());
+        playerOne.setValue(new Player("Player 1"));
+        playerTwo.setValue(new Player("Player 2"));
     }
 
     public int getClickedFragment() {

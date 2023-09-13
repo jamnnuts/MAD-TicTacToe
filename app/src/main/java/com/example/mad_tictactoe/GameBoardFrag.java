@@ -32,13 +32,13 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private String mParam1;
     private String mParam2;
 
-    private static final int[][] winningPositions = {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8},{0,4,8},{2,4,6}};
+    public static final int[][] winningPositions3x3= {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8},{0,4,8},{2,4,6}};
     private  int[] gamestate = {2,2,2,2,2,2,2,2,2};
     private Button[] buttonList = new Button[9];
     private TextView playerTurn;
     private Stack<Integer> undoMoves = new Stack<Integer>();
 
-    private int rounds;
+        private int rounds;
 
     private boolean playerOneActive;
 
@@ -212,7 +212,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
     private boolean checkWinner() {
         boolean winnerDetected = false;
-        for (int[] winningPositions : winningPositions) {
+        for (int[] winningPositions : winningPositions3x3) {
             if (gamestate[winningPositions[0]] == gamestate[winningPositions[1]] &&
                     gamestate[winningPositions[1]] == gamestate[winningPositions[2]] &&
                     gamestate[winningPositions[0]] != 2) {

@@ -10,8 +10,8 @@ public class Player{
     public int losses;
     public int draws;
 
-    public Player() {
-        this.playerName = "default";
+    public Player(String initialName) {
+        this.playerName = initialName;
         this.gamesPlayed = 0;
         this.wins = 0;
         this.losses = 0;
