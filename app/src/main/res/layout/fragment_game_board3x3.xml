@@ -69,7 +69,7 @@
             android:id="@+id/Status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Plaeyr 1 : "
+            android:text="Temp"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/horizGuide15"

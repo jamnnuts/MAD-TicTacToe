@@ -65,21 +65,22 @@ public class PlayerCreationFrag extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_player_creation, container, false);
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
         Button returnButton = rootView.findViewById(R.id.returnButton2);
-        Button saveButton = rootView.findViewById(R.id.saveButton);
+        Button player1SaveButton = rootView.findViewById(R.id.player1saveButton);
+        Button player2SaveButton = rootView.findViewById(R.id.player2saveButton);
         EditText playerName = rootView.findViewById(R.id.playerName);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        player1SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               if(sessionData.playerOne.getValue().getPlayerName() == "default") {
                    sessionData.playerOne.getValue().setPlayerName(playerName.getText().toString());
-                   Toast.makeText(getActivity(), "Player created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
-               }
-               else {
-                   sessionData.playerTwo.getValue().setPlayerName(playerName.getText().toString());
-                   Toast.makeText(getActivity(), "Player created: " + sessionData.playerTwo.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
-               }
+                   Toast.makeText(getActivity(), "Player 1 created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        player2SaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sessionData.playerTwo.getValue().setPlayerName(playerName.getText().toString());
+                Toast.makeText(getActivity(), "Player 2 created: " + sessionData.playerTwo.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
             }
         });
         returnButton.setOnClickListener(new View.OnClickListener() {
