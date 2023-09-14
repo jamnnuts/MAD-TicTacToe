@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -38,10 +41,12 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private Button[] buttonList = new Button[9];
     private TextView playerTurn;
     private Stack<Integer> undoMoves = new Stack<Integer>();
+    private int rounds;
 
-        private int rounds;
-
+    private boolean playerVsPlayer = true;
     private boolean playerOneActive;
+
+    private MutableLiveData<Boolean> botsTurn;
 
     public GameBoardFrag() {
         // Required empty public constructor
@@ -83,7 +88,10 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         Button resetButton = rootView.findViewById(R.id.resetButton3x3);
         Button undoButton = rootView.findViewById(R.id.UndoButton);
         playerTurn = rootView.findViewById(R.id.Status);
+        botsTurn = new MutableLiveData<Boolean>();
+        botsTurn.setValue(false);
 
+        playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
 
         gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
 
@@ -105,6 +113,18 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         playerOneActive = true;
         rounds = 0;
 
+        if (!playerVsPlayer) {
+            botsTurn.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+                @Override
+                public void onChanged(Boolean aBoolean) {
+                    if (botsTurn.getValue() == true) {
+
+                    }
+                }
+            });
+
+        }
+
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +140,8 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 for (int i = 0; i < buttonList.length; i++) {
                     buttonList[i].setText("");
                 }
+                playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+                playerOneActive = true;
             }
         });
 
@@ -138,6 +160,19 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 gamestate[lastMove] = 2;
                 rounds--;
 
+                if (playerOneActive) {
+                    if (playerVsPlayer) {
+                        playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
+                    }
+                    else {
+                        playerTurn.setText("Bot's turn");
+                    }
+                    playerOneActive = !playerOneActive;
+                }
+                else {
+                    playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+                    playerOneActive = !playerOneActive;
+                }
             }
         });
 
@@ -148,73 +183,129 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
 
-        if (!((Button) view).getText().toString().equals("")) {
-            return;
-        } else if (checkWinner()) {
-            return;
-        }
+        if (playerVsPlayer) { //Player Mode
 
-        String buttonID = view.getResources().getResourceEntryName(view.getId());
+            if (!((Button) view).getText().toString().equals("")) {
+                return;
+            } else if (checkWinner()) {
+                return;
+            }
 
-        int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
+            String buttonID = view.getResources().getResourceEntryName(view.getId());
 
-        if (playerOneActive) {
-            ((Button) view).setText("X");
-            ((Button) view).setTextSize(30);
-            ((Button) view).setTextColor(Color.parseColor("#FFA500"));
-            playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
+            int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
 
-            gamestate[gameStatePointer] = 0;
-            undoMoves.push(gameStatePointer);
-
-        } else {
-            ((Button) view).setText("O");
-            ((Button) view).setTextSize(30);
-            ((Button) view).setTextColor(Color.parseColor("#0000FF"));
-            playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
-
-            gamestate[gameStatePointer] = 1;
-            undoMoves.push(gameStatePointer);
-
-        }
-
-        rounds++;
-
-        if (checkWinner()) {
             if (playerOneActive) {
-                Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                ((Button) view).setText("X");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
+
+                gamestate[gameStatePointer] = 0;
+                undoMoves.push(gameStatePointer);
+
+            } else {
+                ((Button) view).setText("O");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
+
+                gamestate[gameStatePointer] = 1;
+                undoMoves.push(gameStatePointer);
+
+            }
+
+            rounds++;
+
+            if (checkWinner()) {
+                if (playerOneActive) {
+                    Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                    playerTurn.setText("Game over!");
+
+                    sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
+                    sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+
+                    sessionData.playerTwo.getValue().setLosses(sessionData.playerTwo.getValue().getLosses() + 1);
+                    sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
+                } else {
+                    Toast.makeText(getActivity(), sessionData.playerTwo.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                    playerTurn.setText("Game over!");
+
+                    sessionData.playerTwo.getValue().setWins(sessionData.playerTwo.getValue().getWins() + 1);
+                    sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
+
+                    sessionData.playerOne.getValue().setLosses(sessionData.playerOne.getValue().getLosses() + 1);
+                    sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                }
+            } else if (rounds == 9) {
+                Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
                 playerTurn.setText("Game over!");
 
-                sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
-                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
+                sessionData.playerTwo.getValue().setDraws(sessionData.playerTwo.getValue().getDraws() + 1);
 
-                sessionData.playerTwo.getValue().setLosses(sessionData.playerTwo.getValue().getLosses() + 1);
+                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
                 sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
             } else {
-                Toast.makeText(getActivity(), sessionData.playerTwo.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
-                playerTurn.setText("Game over!");
-
-                sessionData.playerTwo.getValue().setWins(sessionData.playerTwo.getValue().getWins() + 1);
-                sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
-
-                sessionData.playerOne.getValue().setLosses(sessionData.playerOne.getValue().getLosses() + 1);
-                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                playerOneActive = !playerOneActive;
             }
         }
-        else if (rounds == 9) {
-            Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
-            playerTurn.setText("Game over!");
 
-            sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
-            sessionData.playerTwo.getValue().setDraws(sessionData.playerTwo.getValue().getDraws() + 1);
+        else { //Player vs AI mode
+            if (!((Button) view).getText().toString().equals("")) {
+                return;
+            } else if (checkWinner()) {
+                return;
+            }
 
-            sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
-            sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
+            String buttonID = view.getResources().getResourceEntryName(view.getId());
+            int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
+
+            if (playerOneActive) {
+                ((Button) view).setText("X");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                playerTurn.setText("Bot's turn");
+
+                gamestate[gameStatePointer] = 0;
+                undoMoves.push(gameStatePointer);
+            }
+            else {
+                ((Button) view).setText("O");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
+
+                gamestate[gameStatePointer] = 1;
+                undoMoves.push(gameStatePointer);
+            }
+            rounds++;
+
+            if (checkWinner()) {
+                if (playerOneActive) {
+                    Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                    playerTurn.setText("Game over!");
+
+                    sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
+                    sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+
+                } else {
+                    Toast.makeText(getActivity(),  "Bot wins!", Toast.LENGTH_SHORT).show();
+                    playerTurn.setText("Game over!");
+
+                    sessionData.playerOne.getValue().setLosses(sessionData.playerOne.getValue().getLosses() + 1);
+                    sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                }
+            } else if (rounds == 9) {
+                Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
+                playerTurn.setText("Game over!");
+
+                sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
+                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+            } else {
+                playerOneActive = !playerOneActive;
+            }
         }
-        else {
-            playerOneActive = !playerOneActive;
-        }
-
     }
 
     private boolean checkWinner() {

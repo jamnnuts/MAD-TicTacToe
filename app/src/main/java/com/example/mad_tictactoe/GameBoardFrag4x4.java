@@ -84,6 +84,8 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
         Button undoButton = rootView.findViewById(R.id.Undo);
         playerTurn = rootView.findViewById(R.id.Status);
 
+        playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+
         gamestate = new int[]{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}; //Reset Game
 
         buttonList[0] = rootView.findViewById(R.id.button4x4_0);
@@ -109,6 +111,7 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
         playerOneActive = true;
         rounds = 0;
 
+
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,6 +127,7 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
                 for (int i = 0; i < buttonList.length; i++) {
                     buttonList[i].setText("");
                 }
+                playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
             }
         });
 
@@ -142,6 +146,14 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
                 gamestate[lastMove] = 2;
                 rounds--;
 
+                if (playerOneActive) {
+                    playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() +"'s turn");
+                    playerOneActive = !playerOneActive;
+                }
+                else {
+                    playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+                    playerOneActive = !playerOneActive;
+                }
             }
         });
 
