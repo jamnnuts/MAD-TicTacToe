@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     MainMenuFrag mainMenuFragment = new MainMenuFrag();
     GameBoardFrag gameBoardFrag = new GameBoardFrag();
     PlayerCreationFrag playerCreationFrag = new PlayerCreationFrag();
+
+    GameBoardFrag4x4 gameBoardFrag4x4 = new GameBoardFrag4x4();
     StatFrag statFrag = new StatFrag();
 
     @Override
@@ -40,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (sessionData.getClickedFragment() == 4) {
                     loadPlayerStats();
+                }
+                else if (sessionData.getClickedFragment() == 5) {
+                    loadGameBoard4x4();
                 }
             }
         });
@@ -71,6 +76,18 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             fm.beginTransaction().replace(R.id.first_f_container, gameBoardFrag).commit();
+        }
+    }
+
+    private void loadGameBoard4x4() {
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment frag = fm.findFragmentById(R.id.first_f_container);
+
+        if (frag == null) {
+            fm.beginTransaction().add(R.id.first_f_container, gameBoardFrag4x4).commit();
+        }
+        else {
+            fm.beginTransaction().replace(R.id.first_f_container, gameBoardFrag4x4).commit();
         }
     }
 
