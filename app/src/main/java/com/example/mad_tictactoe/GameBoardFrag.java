@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +82,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton3x3);
         Button resetButton = rootView.findViewById(R.id.resetButton3x3);
         Button undoButton = rootView.findViewById(R.id.UndoButton);
+        playerTurn = rootView.findViewById(R.id.Status);
 
 
         gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
@@ -160,6 +162,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
             ((Button) view).setText("X");
             ((Button) view).setTextSize(30);
             ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+            playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
 
             gamestate[gameStatePointer] = 0;
             undoMoves.push(gameStatePointer);
@@ -168,6 +171,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
             ((Button) view).setText("O");
             ((Button) view).setTextSize(30);
             ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+            playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
 
             gamestate[gameStatePointer] = 1;
             undoMoves.push(gameStatePointer);
@@ -179,6 +183,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         if (checkWinner()) {
             if (playerOneActive) {
                 Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                playerTurn.setText("Game over!");
 
                 sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
                 sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
@@ -187,6 +192,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
             } else {
                 Toast.makeText(getActivity(), sessionData.playerTwo.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                playerTurn.setText("Game over!");
 
                 sessionData.playerTwo.getValue().setWins(sessionData.playerTwo.getValue().getWins() + 1);
                 sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
@@ -197,6 +203,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         }
         else if (rounds == 9) {
             Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
+            playerTurn.setText("Game over!");
 
             sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
             sessionData.playerTwo.getValue().setDraws(sessionData.playerTwo.getValue().getDraws() + 1);
