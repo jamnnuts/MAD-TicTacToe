@@ -75,6 +75,13 @@ public class StatFrag extends Fragment {
         TextView player1GamesPlayed = rootView.findViewById(R.id.gamesPlayedValue1);
         TextView player1WLP = rootView.findViewById(R.id.winPercentageValue1);
 
+        TextView player2Name = rootView.findViewById(R.id.playerName2);
+        TextView player2Wins = rootView.findViewById(R.id.winValue2);
+        TextView player2Lose = rootView.findViewById(R.id.lossValue2);
+        TextView player2Draw = rootView.findViewById(R.id.drawValue2);
+        TextView player2GamesPlayed = rootView.findViewById(R.id.gamesPlayedValue2);
+        TextView player2WLP = rootView.findViewById(R.id.winPercentageValue2);
+
         player1Name.setText(sessionData.playerOne.getValue().getPlayerName().toString());
         player1Wins.setText(Integer.toString(sessionData.playerOne.getValue().getWins()));
         player1Lose.setText(Integer.toString(sessionData.playerOne.getValue().getLosses()));
@@ -84,7 +91,19 @@ public class StatFrag extends Fragment {
             player1WLP.setText("_");
         }
         else {
-            player1WLP.setText(Integer.toString((sessionData.playerOne.getValue().getWins())/(sessionData.playerOne.getValue().getGamesPlayed()) * 100) + "%");
+            player1WLP.setText(Double.toString((sessionData.playerOne.getValue().getWins())/(sessionData.playerOne.getValue().getGamesPlayed())*100) + "%");
+        }
+
+        player2Name.setText(sessionData.playerTwo.getValue().getPlayerName().toString());
+        player2Wins.setText(Integer.toString(sessionData.playerTwo.getValue().getWins()));
+        player2Lose.setText(Integer.toString(sessionData.playerTwo.getValue().getLosses()));
+        player2Draw.setText(Integer.toString(sessionData.playerTwo.getValue().getDraws()));
+        player2GamesPlayed.setText(Integer.toString(sessionData.playerTwo.getValue().getGamesPlayed()));
+        if(sessionData.playerTwo.getValue().getGamesPlayed() == 0) {
+            player2WLP.setText("_");
+        }
+        else {
+            player2WLP.setText(Double.toString((sessionData.playerTwo.getValue().getWins())/(sessionData.playerTwo.getValue().getGamesPlayed()) * 100) + "%");
         }
 
 

@@ -1,5 +1,6 @@
 package com.example.mad_tictactoe;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,11 +72,17 @@ public class PlayerCreationFrag extends Fragment {
         Button player1SaveButton = rootView.findViewById(R.id.player1saveButton);
         Button player2SaveButton = rootView.findViewById(R.id.player2saveButton);
         EditText playerName = rootView.findViewById(R.id.playerName);
+        TextView p1Light = rootView.findViewById(R.id.firstPlayerLight);
+        TextView p2Light = rootView.findViewById(R.id.secondPlayerLight);
+        TextView p1NameIndicator = rootView.findViewById(R.id.playerOneName);
+        TextView p2NameIndicator = rootView.findViewById(R.id.playerTwoName);
 
         player1SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                    sessionData.playerOne.getValue().setPlayerName(playerName.getText().toString());
+                   p1Light.setTextColor(Color.GREEN);
+                   p1NameIndicator.setText(sessionData.playerOne.getValue().getPlayerName().toString());
                    Toast.makeText(getActivity(), "Player 1 created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -80,6 +90,8 @@ public class PlayerCreationFrag extends Fragment {
             @Override
             public void onClick(View view) {
                 sessionData.playerTwo.getValue().setPlayerName(playerName.getText().toString());
+                p2Light.setTextColor(Color.GREEN);
+                p2NameIndicator.setText(sessionData.playerTwo.getValue().getPlayerName().toString());
                 Toast.makeText(getActivity(), "Player 2 created: " + sessionData.playerTwo.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
             }
         });
