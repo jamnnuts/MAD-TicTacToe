@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +44,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private Stack<Integer> undoMoves = new Stack<Integer>();
     private int rounds;
 
-    private boolean playerVsPlayer = true;
+    private boolean playerVsPlayer = false;
     private boolean playerOneActive;
 
     private MutableLiveData<Boolean> botsTurn;
@@ -87,6 +88,8 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton3x3);
         Button resetButton = rootView.findViewById(R.id.resetButton3x3);
         Button undoButton = rootView.findViewById(R.id.UndoButton);
+        Random rand = new Random();
+
         playerTurn = rootView.findViewById(R.id.Status);
         botsTurn = new MutableLiveData<Boolean>();
         botsTurn.setValue(false);
@@ -118,7 +121,13 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 @Override
                 public void onChanged(Boolean aBoolean) {
                     if (botsTurn.getValue() == true) {
-
+                        try {
+                            TimeUnit.SECONDS.sleep(1);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        buttonList[rand.nextInt(9)].performClick();
+                        botsTurn.setValue(false);
                     }
                 }
             });
@@ -302,7 +311,12 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
                 sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
                 sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
-            } else {
+            }
+            else if (!playerOneActive) {
+                botsTurn.setValue(true);
+                playerOneActive = !playerOneActive;
+            }
+            else {
                 playerOneActive = !playerOneActive;
             }
         }
