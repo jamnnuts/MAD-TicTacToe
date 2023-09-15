@@ -116,36 +116,26 @@
                     android:text="Player 2" />
             </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recView"
+            android:layout_margin="0dp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="<">
-
-            </Button>
-            <ImageView
-                android:layout_width="126dp"
-                android:layout_height="126dp"
-                android:id="@+id/playerAvatar"
-                tools:srcCompat="@drawable/avatar1" >
-            </ImageView>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text=">" >
-            </Button>
-        </LinearLayout>
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/returnButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Return" />
+            android:text="Return"
+            app:layout_constraintTop_toBottomOf="@id/recView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </LinearLayout>
     

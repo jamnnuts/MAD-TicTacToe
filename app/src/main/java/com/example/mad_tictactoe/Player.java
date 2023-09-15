@@ -9,7 +9,7 @@ public class Player{
     public int wins;
     public int losses;
     public int draws;
-    public int avatarID;.
+    public int avatarID;
 
     public Player(String initialName) {
         this.playerName = initialName;
