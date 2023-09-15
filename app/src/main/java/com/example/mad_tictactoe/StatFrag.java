@@ -87,11 +87,12 @@ public class StatFrag extends Fragment {
         player1Lose.setText(Integer.toString(sessionData.playerOne.getValue().getLosses()));
         player1Draw.setText(Integer.toString(sessionData.playerOne.getValue().getDraws()));
         player1GamesPlayed.setText(Integer.toString(sessionData.playerOne.getValue().getGamesPlayed()));
+
         if(sessionData.playerOne.getValue().getGamesPlayed() == 0) {
             player1WLP.setText("_");
         }
         else {
-            player1WLP.setText(Double.toString((sessionData.playerOne.getValue().getWins())/(sessionData.playerOne.getValue().getGamesPlayed())*100) + "%");
+            player1WLP.setText(((double)(sessionData.playerOne.getValue().getWins())/(double)(sessionData.playerOne.getValue().getGamesPlayed())*100) + "%");
         }
 
         player2Name.setText(sessionData.playerTwo.getValue().getPlayerName().toString());
@@ -103,7 +104,7 @@ public class StatFrag extends Fragment {
             player2WLP.setText("_");
         }
         else {
-            player2WLP.setText(Double.toString((sessionData.playerTwo.getValue().getWins())/(sessionData.playerTwo.getValue().getGamesPlayed()) * 100) + "%");
+            player2WLP.setText(((double)(sessionData.playerTwo.getValue().getWins())/(double)(sessionData.playerTwo.getValue().getGamesPlayed()) * 100) + "%");
         }
 
 
