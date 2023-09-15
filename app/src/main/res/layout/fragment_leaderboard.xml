@@ -32,7 +32,6 @@
 
     <View
 
-        android:id="@+id/liner"
         android:layout_width="match_parent"
 
         android:orientation="horizontal"
@@ -102,681 +101,224 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/right"
         app:layout_constraintStart_toStartOf="@id/left" />
-    <TextView
-        android:id="@+id/label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:layout_constraintTop_toBottomOf="@+id/liner"
-        app:layout_constraintEnd_toEndOf="@id/right"
-        app:layout_constraintStart_toStartOf="@id/left"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="200dp"
-        android:textSize="15dp"
-        android:text="W L  D GP" />
+
     <LinearLayout
-        android:id="@+id/bruh"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal"
-        android:paddingStart="20dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintTop_toTopOf="@+id/top"
+        android:id="@+id/placement"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="@id/left"
-        app:layout_constraintEnd_toEndOf="@id/right">
-        <LinearLayout
-            android:id="@+id/placement"
+        app:layout_constraintTop_toBottomOf="@id/top"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginStart="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/first"
+            android:textSize="45dp"
+
+            android:paddingTop="5dp"
+            android:text="1st"
+            android:gravity="center"
+            android:textColor="@android:color/holo_orange_light"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/second"
+            android:textSize="30dp"
+            android:text="2nd"
+            android:gravity="center"
+            android:paddingTop="13dp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/third"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_orange_dark"
+            android:text="3rd"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/fourth"
+            android:textSize="15dp"
+            android:text="4th"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/fifth"
+            android:textSize="15dp"
+            android:text="5th"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/sixth"
+            android:textSize="15dp"
+            android:text="6th"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/seventh"
+            android:textSize="15dp"
+            android:text="7th"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/eighth"
+            android:textSize="15dp"
+            android:text="8th"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/ninth"
+            android:textSize="15dp"
+            android:text="9th"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tenth"
+            android:textSize="15dp"
+            android:text="10th"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/entries"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@id/right"
+        app:layout_constraintTop_toBottomOf="@id/top"
+        android:layout_marginTop="170dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/firstentry"
+            android:gravity="left"
+            android:textSize="30dp"
+            android:text="Ja"
+            android:paddingTop="5dp"
+            android:textColor="@android:color/holo_orange_light"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="@id/left"
-            app:layout_constraintTop_toBottomOf="@id/top"
-            android:layout_marginTop="155dp"
-            android:layout_marginBottom="70dp"
-            android:layout_marginStart="20dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"/>
 
-            <TextView
-                android:id="@+id/first"
-                android:textSize="45dp"
+        <TextView
+            android:id="@+id/secondentry"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingTop="17dp"
+            android:text="name here"
 
-                android:paddingTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:text="1st"
-                android:gravity="center"
-                android:textColor="@android:color/holo_orange_light"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/second"
-                android:textSize="30dp"
-                android:text="2nd"
-                android:gravity="center"
-                android:paddingTop="8dp"
-                android:textColor="@android:color/darker_gray"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/third"
-                android:textSize="20dp"
-                android:textColor="@android:color/holo_orange_dark"
-                android:text="3rd"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/fourth"
-                android:textSize="15dp"
-                android:text="4th"
-                android:gravity="center"
-                android:paddingTop="22dp"
-                android:paddingBottom="7dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
+            android:textColor="@android:color/darker_gray"
+            android:textSize="25dp" />
 
-            <TextView
-                android:id="@+id/fifth"
-                android:textSize="15dp"
-                android:text="5th"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:paddingBottom="10dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/sixth"
-                android:textSize="15dp"
-                android:text="6th"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:paddingBottom="10dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/seventh"
-                android:textSize="15dp"
-                android:text="7th"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:paddingBottom="10dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/eighth"
-                android:textSize="15dp"
-                android:text="8th"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:paddingBottom="10dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/ninth"
-                android:textSize="15dp"
-                android:text="9th"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/tenth"
-                android:textSize="15dp"
-                android:text="10th"
-                android:gravity="center"
-                android:paddingTop="16dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/thirdentry"
+            android:gravity="left"
+            android:textSize="20dp"
+            android:text="name here"
+            android:textColor="@android:color/holo_orange_dark"
+            android:paddingTop="17dp"
+            android:paddingBottom="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/fourthentry"
+            android:gravity="left"
+            android:textSize="15dp"
+            android:text="name here"
+            android:paddingTop="17dp"
+            android:paddingBottom="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:id="@+id/entries"
+        <TextView
+            android:id="@+id/fifthentry"
+            android:gravity="left"
+            android:textSize="15dp"
+            android:paddingTop="17dp"
+            android:paddingBottom="5dp"
+            android:text="name here"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/sixthentry"
+            android:gravity="left"
+            android:textSize="15dp"
+            android:paddingTop="17dp"
+            android:paddingBottom="5dp"
+            android:text="name here"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/seventhentry"
+            android:gravity="left"
+            android:textSize="15dp"
+            android:paddingTop="17dp"
+            android:paddingBottom="5dp"
+            android:text="name here"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/eighthentry"
+            android:gravity="left"
+            android:textSize="15dp"
+            android:paddingTop="17dp"
+            android:paddingBottom="5dp"
+            android:text="name here"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/ninthentry"
+            android:gravity="left"
+            android:textSize="15dp"
+            android:paddingTop="17dp"
+            android:paddingBottom="5dp"
+            android:text="name here"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tenthentry"
+            android:gravity="left"
+            android:textSize="15dp"
+            android:paddingTop="17dp"
+            android:text="name here"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/spacer"
+            android:gravity="left"
+            android:textSize="30dp"
+            android:text="                   "
+            android:paddingTop="5dp"
+            android:textColor="@android:color/holo_orange_light"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@id/placement"
-            app:layout_constraintTop_toBottomOf="@id/top"
-            android:layout_marginTop="170dp"
-            android:layout_marginBottom="70dp"
-            android:layout_marginStart="0dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/firstentry"
-                android:gravity="left"
-                android:textSize="30dp"
-                android:text="yeet"
-                android:paddingTop="5dp"
-                android:textColor="@android:color/holo_orange_light"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/secondentry"
-                android:gravity="left"
-                android:textSize="25dp"
-                android:text="name here"
-                android:textColor="@android:color/darker_gray"
-                android:paddingTop="17dp"
-
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/thirdentry"
-                android:gravity="left"
-                android:textSize="20dp"
-                android:text="name here"
-                android:textColor="@android:color/holo_orange_dark"
-                android:paddingTop="17dp"
-                android:paddingBottom="5dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/fourthentry"
-                android:gravity="left"
-                android:textSize="15dp"
-                android:text="name here"
-                android:paddingTop="17dp"
-                android:paddingBottom="5dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/fifthentry"
-                android:gravity="left"
-                android:textSize="15dp"
-                android:paddingTop="17dp"
-                android:paddingBottom="5dp"
-                android:text="name here"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/sixthentry"
-                android:gravity="left"
-                android:textSize="15dp"
-                android:paddingTop="17dp"
-                android:paddingBottom="5dp"
-                android:text="name here"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/seventhentry"
-                android:gravity="left"
-                android:textSize="15dp"
-                android:paddingTop="17dp"
-                android:paddingBottom="5dp"
-                android:text="name here"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/eighthentry"
-                android:gravity="left"
-                android:textSize="15dp"
-                android:paddingTop="17dp"
-                android:paddingBottom="5dp"
-                android:text="name here"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/ninthentry"
-                android:gravity="left"
-                android:textSize="15dp"
-                android:paddingTop="17dp"
-                android:paddingBottom="5dp"
-                android:text="name here"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/tenthentry"
-                android:gravity="left"
-                android:textSize="15dp"
-                android:paddingTop="17dp"
-                android:text="name here"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/spacer"
-                android:gravity="left"
-                android:textSize="30dp"
-                android:text="                  "
-                android:paddingTop="5dp"
-                android:textColor="@android:color/holo_orange_light"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/kda"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toStartOf="@id/right"
-            app:layout_constraintTop_toBottomOf="@id/top"
-            android:layout_marginTop="170dp"
-            android:layout_marginBottom="70dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:id="@+id/win"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="0">
-
-                <TextView
-                    android:id="@+id/firstk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:paddingTop="5dp"
-                    android:text="1"
-                    android:textColor="@android:color/holo_orange_light"
-                    android:textSize="30dp" />
-
-                <TextView
-                    android:id="@+id/secondk"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-
-                    android:paddingTop="17dp"
-                    android:text="1"
-
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="25dp" />
-
-                <TextView
-                    android:id="@+id/thirdk"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/fourthk"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/fifthk"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/sixthk"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/seventhk"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/eighthk"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/ninthk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/tenthk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:paddingTop="17dp"
-                    android:text="1"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/spacer2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:paddingTop="5dp"
-                    android:textColor="@android:color/holo_orange_light"
-                    android:textSize="30dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/loss"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0">
-
-                <TextView
-                    android:id="@+id/firstd"
-                    android:gravity="left"
-                    android:textSize="30dp"
-                    android:text="1"
-                    android:paddingTop="5dp"
-                    android:textColor="@android:color/holo_orange_light"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/secondd"
-                    android:gravity="left"
-                    android:textSize="25dp"
-                    android:text="1"
-                    android:textColor="@android:color/darker_gray"
-                    android:paddingTop="17dp"
-
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/thirdd"
-                    android:gravity="left"
-                    android:textSize="20dp"
-                    android:text="1"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/fourthd"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:text="1"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/fifthd"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/sixthd"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/seventhd"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/eighthd"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/ninthd"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/tenthd"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/draw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/firsta"
-                    android:gravity="left"
-                    android:textSize="30dp"
-                    android:text="1"
-                    android:paddingTop="5dp"
-                    android:textColor="@android:color/holo_orange_light"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/seconda"
-                    android:gravity="left"
-                    android:textSize="25dp"
-                    android:text="1"
-                    android:textColor="@android:color/darker_gray"
-                    android:paddingTop="17dp"
-
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/thirda"
-                    android:gravity="left"
-                    android:textSize="20dp"
-                    android:text="1"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/fourtha"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:text="1"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/fiftha"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/sixtha"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/seventha"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/eightha"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/nintha"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/tentha"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/gamesplayed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/firstg"
-                    android:gravity="left"
-                    android:textSize="30dp"
-                    android:text="1"
-                    android:paddingTop="5dp"
-                    android:textColor="@android:color/holo_orange_light"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/secondg"
-                    android:gravity="left"
-                    android:textSize="25dp"
-                    android:text="1"
-                    android:textColor="@android:color/darker_gray"
-                    android:paddingTop="17dp"
-
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/thirdg"
-                    android:gravity="left"
-                    android:textSize="20dp"
-                    android:text="1"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/fourthg"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:text="1"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/fifthg"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/sixthg"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/seventhg"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/eighthg"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/ninthg"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:paddingBottom="5dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/tenthg"
-                    android:gravity="left"
-                    android:textSize="15dp"
-                    android:paddingTop="17dp"
-                    android:text="1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </LinearLayout>
-
-
-
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 

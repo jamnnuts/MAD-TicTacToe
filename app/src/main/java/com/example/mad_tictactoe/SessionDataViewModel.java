@@ -6,18 +6,27 @@ import androidx.lifecycle.ViewModel;
 public class SessionDataViewModel extends ViewModel {
 
     public MutableLiveData<Integer> clickedFragment;
+    public MutableLiveData<Player> playerOne;
+    public MutableLiveData<Player> playerTwo;
 
     public SessionDataViewModel() {
         clickedFragment = new MutableLiveData<Integer>();
+        playerOne = new MutableLiveData<Player>();
+        playerTwo = new MutableLiveData<Player>();
 
         clickedFragment.setValue(0);
+        playerOne.setValue(new Player());
+        playerTwo.setValue(new Player());
     }
 
     public int getClickedFragment() {
         return clickedFragment.getValue();
     }
-
     public void setClickedFragment(int value) {
         clickedFragment.setValue(value);
     }
+    public Player getPlayerOne() {return playerOne.getValue();}
+    public void setPlayerOne(Player inPlayer) {playerOne.setValue(inPlayer);}
+    public Player getPlayerTwo() {return playerTwo.getValue();}
+    public void setPlayerTwo(Player inPlayer){playerTwo.setValue(inPlayer);}
 }

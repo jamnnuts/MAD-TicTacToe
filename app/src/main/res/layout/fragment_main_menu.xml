@@ -29,7 +29,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/menuGuideline1"/>
 
-
         <Button
             android:id="@+id/playButton"
             android:layout_width="wrap_content"
@@ -38,6 +37,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/menuGuideline1" />
+        <Button
+            android:id="@+id/createAvatarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Game Rules"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/playButton" />
+
+        <Button
+            android:id="@+id/playerCreationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Player"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/createAvatarButton" />
+
+        <Button
+            android:id="@+id/settingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/playerCreationButton" />
 
 
 
