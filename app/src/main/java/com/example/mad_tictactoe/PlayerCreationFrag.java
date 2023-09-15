@@ -1,5 +1,6 @@
 package com.example.mad_tictactoe;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,21 +69,30 @@ public class PlayerCreationFrag extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_player_creation, container, false);
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
         Button returnButton = rootView.findViewById(R.id.returnButton2);
-        Button saveButton = rootView.findViewById(R.id.saveButton);
+        Button player1SaveButton = rootView.findViewById(R.id.player1saveButton);
+        Button player2SaveButton = rootView.findViewById(R.id.player2saveButton);
         EditText playerName = rootView.findViewById(R.id.playerName);
+        TextView p1Light = rootView.findViewById(R.id.firstPlayerLight);
+        TextView p2Light = rootView.findViewById(R.id.secondPlayerLight);
+        TextView p1NameIndicator = rootView.findViewById(R.id.playerOneName);
+        TextView p2NameIndicator = rootView.findViewById(R.id.playerTwoName);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        player1SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               if(sessionData.playerOne.getValue().getPlayerName() == "default") {
                    sessionData.playerOne.getValue().setPlayerName(playerName.getText().toString());
-                   Toast.makeText(getActivity(), "Player created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
-               }
-               else {
-                   sessionData.playerTwo.getValue().setPlayerName(playerName.getText().toString());
-                   Toast.makeText(getActivity(), "Player created: " + sessionData.playerTwo.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
-               }
+                   p1Light.setTextColor(Color.GREEN);
+                   p1NameIndicator.setText(sessionData.playerOne.getValue().getPlayerName().toString());
+                   Toast.makeText(getActivity(), "Player 1 created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        player2SaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sessionData.playerTwo.getValue().setPlayerName(playerName.getText().toString());
+                p2Light.setTextColor(Color.GREEN);
+                p2NameIndicator.setText(sessionData.playerTwo.getValue().getPlayerName().toString());
+                Toast.makeText(getActivity(), "Player 2 created: " + sessionData.playerTwo.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
             }
         });
         returnButton.setOnClickListener(new View.OnClickListener() {

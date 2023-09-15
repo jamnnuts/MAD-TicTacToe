@@ -66,13 +66,13 @@ public class MainMenuFrag extends Fragment {
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
         Button playButton = rootView.findViewById(R.id.playButton);
         Button createPlayerButton = rootView.findViewById(R.id.playerCreationButton);
+        Button statButton = rootView.findViewById(R.id.statButton);
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 sessionData.setClickedFragment(2);
-                //Need to implement a way to grab the String inputted in the 'player name' field and create a Player class out of it.
             }
         });
 
@@ -81,7 +81,14 @@ public class MainMenuFrag extends Fragment {
             public void onClick(View view) {
 
                 sessionData.setClickedFragment(3);
-                //Need to implement a way to grab the String inputted in the 'player name' field and create a Player class out of it.
+            }
+        });
+
+        statButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                sessionData.setClickedFragment(4);
             }
         });
 
