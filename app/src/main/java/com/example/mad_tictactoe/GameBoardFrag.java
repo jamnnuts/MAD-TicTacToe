@@ -44,7 +44,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private Stack<Integer> undoMoves = new Stack<Integer>();
     private int rounds;
 
-    private boolean playerVsPlayer = false;
+    private boolean playerVsPlayer = true; //Activation boolean for bot game or playervsplayer game **REMEMBER TO CHANGE WHEN SETTINGS PAGE IS IMPLEMENTED
     private boolean playerOneActive;
 
     private MutableLiveData<Boolean> botsTurn;
@@ -121,12 +121,15 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 @Override
                 public void onChanged(Boolean aBoolean) {
                     if (botsTurn.getValue() == true) {
-                        try {
-                            TimeUnit.SECONDS.sleep(1);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
+                        int emptyButtonIndex = 0;
+                        boolean emptyIndexFound = false;
+                        while (!emptyIndexFound) { //Search for an empty grid cell
+                            emptyButtonIndex = rand.nextInt(9);
+                            if (gamestate[emptyButtonIndex] == 2) {
+                                emptyIndexFound = true;
+                            }
                         }
-                        buttonList[rand.nextInt(9)].performClick();
+                        buttonList[emptyButtonIndex].performClick();
                         botsTurn.setValue(false);
                     }
                 }
@@ -151,6 +154,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 }
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
                 playerOneActive = true;
+                botsTurn.setValue(false);
             }
         });
 
@@ -192,18 +196,17 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
 
+        if (!((Button) view).getText().toString().equals("")) {
+            return;
+        } else if (checkWinner()) {
+            return;
+        }
+
+        String buttonID = view.getResources().getResourceEntryName(view.getId());
+
+        int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
+
         if (playerVsPlayer) { //Player Mode
-
-            if (!((Button) view).getText().toString().equals("")) {
-                return;
-            } else if (checkWinner()) {
-                return;
-            }
-
-            String buttonID = view.getResources().getResourceEntryName(view.getId());
-
-            int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
-
             if (playerOneActive) {
                 ((Button) view).setText("X");
                 ((Button) view).setTextSize(30);
@@ -261,15 +264,6 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         }
 
         else { //Player vs AI mode
-            if (!((Button) view).getText().toString().equals("")) {
-                return;
-            } else if (checkWinner()) {
-                return;
-            }
-
-            String buttonID = view.getResources().getResourceEntryName(view.getId());
-            int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
-
             if (playerOneActive) {
                 ((Button) view).setText("X");
                 ((Button) view).setTextSize(30);
@@ -312,9 +306,9 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
                 sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
             }
-            else if (!playerOneActive) {
-                botsTurn.setValue(true);
+            else if (playerOneActive) {
                 playerOneActive = !playerOneActive;
+                botsTurn.setValue(true);
             }
             else {
                 playerOneActive = !playerOneActive;
