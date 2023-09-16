@@ -27,10 +27,10 @@ implementing all the features required for the MAD assignment will look like thi
 Multiple Game Modes
 
 Our Tic-Tac-Toe Android app offers multiple game modes to cater to different player preferences:
-- 2-Player Mode: In this mode, two human players take turns playing against each other on the same device. It provides a classic and engaging head-to-head gaming 
-experience.
-- Vs. AI Mode: Our app includes a vs. AI mode for solo players or those seeking a challenge. In this mode, a human player can test their skills against a simple 
-AI opponent. The AI makes random moves, making it a suitable opponent for players of all levels.
+- 2-Player Mode: In this mode, two human players take turns playing against each other on the same device. It provides a classic and engaging head-to-head
+gaming experience.
+- Vs. AI Mode: Our app includes a vs. AI mode for solo players or those seeking a challenge. In this mode, a human player can test their skills against a
+simple AI opponent. The AI makes random moves, making it a suitable opponent for players of all levels.
 
 Personalization
 
@@ -67,8 +67,8 @@ icons).
 - Game Progress Tracking: Players can monitor the number of moves made and the total available moves. This information helps them assess their chances of
 winning or achieving a draw.
 - Countdown Timer: Each player's turn is timed with a countdown timer, adding an element of strategy and excitement to the game.
-- Notifications and Messages: Our app provides informative messages and notifications for significant game events, such as declaring a win, a draw, or an invalid 
-move. Players receive timely feedback on the game's outcome.
+- Notifications and Messages: Our app provides informative messages and notifications for significant game events, such as declaring a win, a draw, or an
+invalid move. Players receive timely feedback on the game's outcome.
 - Undo and Reset Options: Players can undo their last move or reset the game board to correct a mistake or start over.
 - Settings and Menu: Easy access to settings allows players to adjust customizations or return to the main menu at any point during the game. It ensures a 
 seamless user experience.
@@ -82,8 +82,8 @@ including phones and tablets.
 - Orientation Preservation: In-game information is retained even when the device orientation changes, preventing data loss and disruptions during gameplay.
 - Fragment-Based Architecture: We've implemented a fragment-based architecture to efficiently manage different UI components, such as the main menu, settings 
 screen, user profile, and game board. This promotes modularity and maintainability.
-- Avatar Selection with RecyclerView: We utilize RecyclerView (or alternative techniques) to provide a scrollable grid or list of avatar options, ensuring a
-user-friendly selection process.
+- Avatar Selection with RecyclerView: We utilize RecyclerView to provide a scrollable grid or list of avatar options, ensuring a user-friendly selection
+process.
 
 Our Tic-Tac-Toe Android app is designed to provide an engaging, customizable, and technically robust gaming experience that caters to a wide range of players 
 and preferences.
@@ -110,10 +110,12 @@ It's where users can personalize their gaming identity.
 - fragment_stat.xml: This XML file is responsible for the layout of the statistics screen, where users can view detailed gameplay statistics, including their
 total games played, wins, losses, draws, and win percentages.
 
-To provide a deeper understanding of this Tic-Tac-Toe Android app's functionality, here's an overview of the Java files included in the project, located in the app/src/main/java/com/example/mad_tictactoe directory:
+To provide a deeper understanding of this Tic-Tac-Toe Android app's functionality, here's an overview of the Java files included in the project, located in the 
+app/src/main/java/com/example/mad_tictactoe directory:
 
 - GameBoardFrag.java, GameBoardFrag4x4.java, and GameBoardFrag5x5.java: These Java files correspond to different gameboard fragments. Each implements a
-specific board size (3x3, 4x4, or 5x5) and handles the logic and user interface for the respective game board. These classes manage the placement of markers, track game progress, and handle player interactions for their respective board sizes.
+specific board size (3x3, 4x4, or 5x5) and handles the logic and user interface for the respective game board. These classes manage the placement of markers,
+track game progress, and handle player interactions for their respective board sizes.
 - MainActivity.java: This Java file represents the main activity of the app. It controls the overall flow and navigation within the app, including the
 transition between different fragments, such as the game board, main menu, leaderboard, and player creation screens. It serves as the entry point for the app.
 - MainMenuFrag.java: This class is responsible for the logic and user interface of the main menu fragment. It integrates player tracking into the game logic,
