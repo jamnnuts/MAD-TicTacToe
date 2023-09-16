@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     loadMainMenu();
                 }
                 else if (sessionData.getClickedFragment() == 2) {
-                    loadGameBoard5x5();
+                    loadGameBoard();
                 }
                 else if (sessionData.getClickedFragment() == 3) {
                     loadPlayerCreation();
