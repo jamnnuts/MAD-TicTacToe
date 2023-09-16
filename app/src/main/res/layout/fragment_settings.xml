@@ -65,24 +65,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3x3"
-                tools:layout_editor_absoluteX="18dp"
-                tools:layout_editor_absoluteY="174dp" />
+                android:layout_weight="0" />
 
             <Button
                 android:id="@+id/board4x4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4x4"
-                tools:layout_editor_absoluteX="146dp"
-                tools:layout_editor_absoluteY="170dp" />
+                android:layout_weight="0" />
 
             <Button
                 android:id="@+id/board5x5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5x5"
-                tools:layout_editor_absoluteX="291dp"
-                tools:layout_editor_absoluteY="178dp" />
+                android:layout_weight="0" />
         </LinearLayout>
         <TextView
             android:layout_width="fill_parent"
@@ -110,24 +107,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3 markers"
-                tools:layout_editor_absoluteX="18dp"
-                tools:layout_editor_absoluteY="174dp" />
+                android:layout_weight="0" />
 
             <Button
                 android:id="@+id/win4x4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4 markers"
-                tools:layout_editor_absoluteX="146dp"
-                tools:layout_editor_absoluteY="170dp" />
+                android:layout_weight="0" />
 
             <Button
                 android:id="@+id/win5x5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5 markers"
-                tools:layout_editor_absoluteX="291dp"
-                tools:layout_editor_absoluteY="178dp" />
+                android:layout_weight="0" />
         </LinearLayout>
         <TextView
             android:layout_width="fill_parent"
@@ -157,16 +151,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="    XO    "
-                tools:layout_editor_absoluteX="146dp"
-                tools:layout_editor_absoluteY="170dp" />
+                android:layout_weight="0" />
 
             <Button
                 android:id="@+id/customiconmarkers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="custom"
-                tools:layout_editor_absoluteX="146dp"
-                tools:layout_editor_absoluteY="170dp" />
+                android:layout_weight="0" />
 
         </LinearLayout>
 

@@ -1,6 +1,9 @@
 package com.example.mad_tictactoe;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -48,6 +51,8 @@ public class settings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        SessionDataViewModel sessionData = new ViewModelProvider(this).get(SessionDataViewModel.class);
+
         Button b3x3 = view.findViewById(R.id.board3x3);
         Button b4x4 = view.findViewById(R.id.board4x4);
         Button b5x5 = view.findViewById(R.id.board5x5);
@@ -61,11 +66,13 @@ public class settings extends Fragment {
 
         b3x3.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                b3x3.setBackgroundColor(Color.parseColor("#5b39c6"));
+                b4x4.setBackgroundColor(Color.parseColor("#AAAFB4"));
+                b5x5.setBackgroundColor(Color.parseColor("#AAAFB4"));
+                sessionData.setGridSize(0);
             }
         });
         b4x4.setOnClickListener(new View.OnClickListener()
@@ -74,7 +81,10 @@ public class settings extends Fragment {
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                b3x3.setBackgroundColor(Color.parseColor("#AAAFB4"));
+                b4x4.setBackgroundColor(Color.parseColor("#5b39c6"));
+                b5x5.setBackgroundColor(Color.parseColor("#AAAFB4"));
+                sessionData.setGridSize(1);
             }
         });
         b5x5.setOnClickListener(new View.OnClickListener()
@@ -83,7 +93,10 @@ public class settings extends Fragment {
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                b3x3.setBackgroundColor(Color.parseColor("#AAAFB4"));
+                b4x4.setBackgroundColor(Color.parseColor("#AAAFB4"));
+                b5x5.setBackgroundColor(Color.parseColor("#5b39c6"));
+                sessionData.setGridSize(2);
             }
         });
 
