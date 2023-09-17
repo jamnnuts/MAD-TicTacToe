@@ -41,29 +41,60 @@
             app:layout_constraintStart_toEndOf="@id/VertGuide50"
             app:layout_constraintTop_toTopOf="@id/HorizGuide85" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/HorizGuide25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HorizGuide25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="648dp" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/horizGuide15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizGuide15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="130dp" />
+
+    <LinearLayout
+        android:id = "@+id/undoTimerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/HorizGuide25"
+        app:layout_constraintTop_toTopOf="@id/horizGuide15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
             android:id="@+id/UndoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Undo Move"
+            android:layout_weight="5"
             app:layout_constraintBottom_toTopOf="@+id/HorizGuide25"
             app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/horizGuide15" />
+        <TextView
+            android:id="@+id/timer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player 1 timer"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGuide25"
+            app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizGuide15" />
+        <TextView
+            android:id="@+id/timer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player 2 timer"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toTopOf="@+id/HorizGuide25"
+            app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizGuide15" />
+    </LinearLayout>
 
         <TextView
             android:id="@+id/Status"
