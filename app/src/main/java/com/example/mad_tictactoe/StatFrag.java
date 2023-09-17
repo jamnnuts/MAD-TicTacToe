@@ -9,9 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +22,7 @@ import org.w3c.dom.Text;
  * create an instance of this fragment.
  */
 public class StatFrag extends Fragment {
+    ArrayList<Integer> avatarArray;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,6 +67,13 @@ public class StatFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        avatarArray = new ArrayList<>();
+        avatarArray.add(R.drawable.avatar1);
+        avatarArray.add(R.drawable.avatar2);
+        avatarArray.add(R.drawable.avatar3);
+        avatarArray.add(R.drawable.avatar4);
+        avatarArray.add(R.drawable.avatar5);
+        avatarArray.add(R.drawable.avatar6);
 
         View rootView = inflater.inflate(R.layout.fragment_stat, container, false);
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
@@ -74,6 +85,7 @@ public class StatFrag extends Fragment {
         TextView player1Draw = rootView.findViewById(R.id.drawValue1);
         TextView player1GamesPlayed = rootView.findViewById(R.id.gamesPlayedValue1);
         TextView player1WLP = rootView.findViewById(R.id.winPercentageValue1);
+        ImageView player1Avatar = rootView.findViewById(R.id.avatar1);
 
         TextView player2Name = rootView.findViewById(R.id.playerName2);
         TextView player2Wins = rootView.findViewById(R.id.winValue2);
@@ -81,12 +93,15 @@ public class StatFrag extends Fragment {
         TextView player2Draw = rootView.findViewById(R.id.drawValue2);
         TextView player2GamesPlayed = rootView.findViewById(R.id.gamesPlayedValue2);
         TextView player2WLP = rootView.findViewById(R.id.winPercentageValue2);
+        ImageView player2Avatar = rootView.findViewById(R.id.avatar2);
 
         player1Name.setText(sessionData.playerOne.getValue().getPlayerName().toString());
         player1Wins.setText(Integer.toString(sessionData.playerOne.getValue().getWins()));
         player1Lose.setText(Integer.toString(sessionData.playerOne.getValue().getLosses()));
         player1Draw.setText(Integer.toString(sessionData.playerOne.getValue().getDraws()));
         player1GamesPlayed.setText(Integer.toString(sessionData.playerOne.getValue().getGamesPlayed()));
+        player1Avatar.setImageResource(avatarArray.get(sessionData.playerOne.getValue().getAvatarID()));
+
 
         if(sessionData.playerOne.getValue().getGamesPlayed() == 0) {
             player1WLP.setText("_");
@@ -100,6 +115,7 @@ public class StatFrag extends Fragment {
         player2Lose.setText(Integer.toString(sessionData.playerTwo.getValue().getLosses()));
         player2Draw.setText(Integer.toString(sessionData.playerTwo.getValue().getDraws()));
         player2GamesPlayed.setText(Integer.toString(sessionData.playerTwo.getValue().getGamesPlayed()));
+        player2Avatar.setImageResource(avatarArray.get(sessionData.playerTwo.getValue().getAvatarID()));
         if(sessionData.playerTwo.getValue().getGamesPlayed() == 0) {
             player2WLP.setText("_");
         }
