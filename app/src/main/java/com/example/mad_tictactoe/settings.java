@@ -51,7 +51,13 @@ public class settings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
+
+
+        Button pvp = view.findViewById(R.id.PVP);
+        Button pve = view.findViewById(R.id.PVE);
+
         SessionDataViewModel sessionData = new ViewModelProvider(this).get(SessionDataViewModel.class);
+
 
         Button b3x3 = view.findViewById(R.id.board3x3);
         Button b4x4 = view.findViewById(R.id.board4x4);
@@ -138,6 +144,26 @@ public class settings extends Fragment {
             }
         });
         custommarker.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+            }
+        });
+
+        pvp.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+            }
+        });
+
+        pve.setOnClickListener(new View.OnClickListener()
         {
 
             @Override
