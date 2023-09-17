@@ -6,9 +6,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +28,7 @@ import java.util.ArrayList;
  * Use the {@link PlayerCreationFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PlayerCreationFrag extends Fragment {
+public class PlayerCreationFrag extends Fragment implements AvatarAdapter.IAvatarRecycler {
     ArrayList<Integer> avatarArray;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -86,8 +88,8 @@ public class PlayerCreationFrag extends Fragment {
 
         RecyclerView rv = rootView.findViewById(R.id.recView);
         rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(rootView.getContext(),LinearLayoutManager.HORIZONTAL, false));
-        AvatarAdapter adapter = new AvatarAdapter(avatarArray);
+        rv.setLayoutManager(new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        AvatarAdapter adapter = new AvatarAdapter(avatarArray, this);
         rv.setAdapter(adapter);
 
         Button returnButton = rootView.findViewById(R.id.returnButton2);
@@ -129,4 +131,8 @@ public class PlayerCreationFrag extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void exampleMethod(int position) {
+        Log.d("Test 1", String.valueOf(position));
+    }
 }
