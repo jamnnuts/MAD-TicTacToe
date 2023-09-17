@@ -69,7 +69,6 @@
             android:id="@+id/Status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Player X's Turn"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/horizGuide15"
@@ -79,7 +78,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

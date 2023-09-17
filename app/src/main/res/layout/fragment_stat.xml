@@ -3,130 +3,251 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/playerCreation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/playerStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player stats"
+        android:textSize="40dp"
+        android:fontFamily="@font/hey_comic"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/menuButtons"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <GridLayout
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/playerStats"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/returnButton">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="(Player name)" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/playerCreation1"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/playerCreation2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="4"
-                android:layout_column="1"
-                android:layout_weight="1"
-                android:text="TextView" />
+                <TextView
+                    android:id="@+id/playerName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/hey_comic"
+                    android:text="(Player name)" />
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:text="Wins:" />
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="126dp"
+                    android:layout_height="126dp"
+                    android:layout_row="0"
+                    android:layout_rowSpan="6"
+                    android:layout_column="2"
+                    tools:srcCompat="@drawable/avatar1" />
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="2"
-                android:layout_column="0"
-                android:text="Losses: " />
 
-            <TextView
-                android:id="@+id/Draws"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="3"
-                android:layout_column="0"
-                android:text="Draws:" />
+                <TextView
+                    android:id="@+id/winText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:text="Wins: " />
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="2"
-                android:layout_column="1"
-                android:text="TextView" />
+                <TextView
+                    android:id="@+id/winValue1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="1" />
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="1"
-                android:layout_column="1"
-                android:text="TextView" />
+                <TextView
+                    android:id="@+id/lossText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:text="Losses: " />
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="3"
-                android:layout_column="1"
-                android:text="TextView" />
+                <TextView
+                    android:id="@+id/lossValue1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1" />
 
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="4"
-                android:layout_column="0"
-                android:text="Win Percentage: " />
+                <TextView
+                    android:id="@+id/drawText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="0"
+                    android:text="Draws: " />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="0"
-                android:layout_column="1"
-                tools:srcCompat="@tools:sample/avatars" />
+                <TextView
+                    android:id="@+id/drawValue1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="1"/>
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="5"
-                android:layout_column="0"
-                android:text="Games played" />
+                <TextView
+                    android:id="@+id/gamesPlayedText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="0"
+                    android:text="Games played: " />
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="5"
-                android:layout_column="1"
-                android:text="TextView" />
+                <TextView
+                    android:id="@+id/gamesPlayedValue1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="1"/>
 
-        </GridLayout>
+                <TextView
+                    android:id="@+id/winPercentageText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="5"
+                    android:layout_column="0"
+                    android:text="Win %: " />
+
+                <TextView
+                    android:id="@+id/winPercentageValue1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="5"
+                    android:layout_column="1"/>
+
+            </GridLayout>
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/playerCreation2"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/playerCreation1"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/playerName2"
+                    android:fontFamily="@font/hey_comic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(Player name)" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="126dp"
+                    android:layout_height="126dp"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:layout_rowSpan="6"
+                    tools:srcCompat="@drawable/avatar2" />
+
+                <TextView
+                    android:id="@+id/winText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:text="Wins: " />
+
+                <TextView
+                    android:id="@+id/winValue2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="1" />
+
+                <TextView
+                    android:id="@+id/lossText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:text="Losses: " />
+
+                <TextView
+                    android:id="@+id/lossValue2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1" />
+
+                <TextView
+                    android:id="@+id/drawText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="0"
+                    android:text="Draws: " />
+
+                <TextView
+                    android:id="@+id/drawValue2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="1"/>
+
+                <TextView
+                    android:id="@+id/gamesPlayedText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="0"
+                    android:text="Games played: " />
+
+                <TextView
+                    android:id="@+id/gamesPlayedValue2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="1"/>
+
+                <TextView
+                    android:id="@+id/winPercentageText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="5"
+                    android:layout_column="0"
+                    android:text="Win %: " />
+
+                <TextView
+                    android:id="@+id/winPercentageValue2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="5"
+                    android:layout_column="1"/>
+
+            </GridLayout>
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/returnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/menuButtons"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="128dp">
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>

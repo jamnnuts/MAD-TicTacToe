@@ -56,10 +56,10 @@
             app:layout_constraintTop_toBottomOf="@id/createAvatarButton" />
 
         <Button
-            android:id="@+id/settingButton"
+            android:id="@+id/statButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings"
+            android:text="Game stats"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/playerCreationButton" />
