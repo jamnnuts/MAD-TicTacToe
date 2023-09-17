@@ -1,10 +1,13 @@
 package com.example.mad_tictactoe;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +19,15 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link PlayerCreationFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class PlayerCreationFrag extends Fragment {
+    ArrayList<Integer> avatarArray;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,8 +72,24 @@ public class PlayerCreationFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        avatarArray = new ArrayList<>();
+        avatarArray.add(R.drawable.avatar1);
+        avatarArray.add(R.drawable.avatar2);
+        avatarArray.add(R.drawable.avatar3);
+        avatarArray.add(R.drawable.avatar4);
+        avatarArray.add(R.drawable.avatar5);
+        avatarArray.add(R.drawable.avatar6);
+
         View rootView = inflater.inflate(R.layout.fragment_player_creation, container, false);
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
+
+        RecyclerView rv = rootView.findViewById(R.id.recView);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(rootView.getContext(),LinearLayoutManager.HORIZONTAL, false));
+        AvatarAdapter adapter = new AvatarAdapter(avatarArray);
+        rv.setAdapter(adapter);
+
         Button returnButton = rootView.findViewById(R.id.returnButton2);
         Button player1SaveButton = rootView.findViewById(R.id.player1saveButton);
         Button player2SaveButton = rootView.findViewById(R.id.player2saveButton);
@@ -76,6 +98,8 @@ public class PlayerCreationFrag extends Fragment {
         TextView p2Light = rootView.findViewById(R.id.secondPlayerLight);
         TextView p1NameIndicator = rootView.findViewById(R.id.playerOneName);
         TextView p2NameIndicator = rootView.findViewById(R.id.playerTwoName);
+
+
 
         player1SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
