@@ -38,6 +38,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="GAMEMODE" />
+        <View
+
+            android:layout_width="match_parent"
+
+            android:orientation="horizontal"
+            android:layout_height="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/PVP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PVP"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="174dp" />
+
+            <Button
+                android:id="@+id/PVE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PVE"
+                tools:layout_editor_absoluteX="146dp"
+                tools:layout_editor_absoluteY="170dp" />
+
+        </LinearLayout>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -49,7 +89,7 @@
 
             android:orientation="horizontal"
             android:layout_height="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:background="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -58,7 +98,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/board3x3"
@@ -95,7 +135,7 @@
 
             android:orientation="horizontal"
             android:layout_height="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:background="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -103,7 +143,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/win3x3"
@@ -140,7 +180,7 @@
 
             android:orientation="horizontal"
             android:layout_height="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:background="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
             android:paddingTop="100dp"
@@ -150,7 +190,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/xomarkers"
