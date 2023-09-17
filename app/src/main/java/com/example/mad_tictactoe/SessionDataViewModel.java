@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 *  2 = GameBoard3x3
 *  3 = Player Creation
 *  4 = Stats Page
+*  5 = Settings page
 *
 *  gridSize: Chooses between gameboards of sizes: 3x3, 4x4 or 5x5
 *  0 = 3x3 = default

@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".settings">
 
-
     <TextView
         android:id="@+id/Setting"
         android:layout_width="wrap_content"
@@ -19,12 +18,9 @@
     <View
 
         android:layout_width="match_parent"
-
         android:orientation="horizontal"
         android:layout_height="5dp"
         android:background="@android:color/black"
-
-
         app:layout_constraintBottom_toBottomOf="@id/Setting"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -37,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/return3">
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -71,6 +67,7 @@
                 android:id="@+id/board4x4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#AAAFB4"
                 android:text="4x4"
                 android:layout_weight="0" />
 
@@ -78,6 +75,7 @@
                 android:id="@+id/board5x5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#AAAFB4"
                 android:text="5x5"
                 android:layout_weight="0" />
         </LinearLayout>
@@ -113,6 +111,7 @@
                 android:id="@+id/win4x4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#AAAFB4"
                 android:text="4 markers"
                 android:layout_weight="0" />
 
@@ -120,6 +119,7 @@
                 android:id="@+id/win5x5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#AAAFB4"
                 android:text="5 markers"
                 android:layout_weight="0" />
         </LinearLayout>
@@ -158,11 +158,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="custom"
+                android:backgroundTint="#AAAFB4"
                 android:layout_weight="0" />
 
         </LinearLayout>
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/return3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return To Menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/screen"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     StatFrag statFrag = new StatFrag();
 
+    settings settingsFrag = new settings();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +39,15 @@ public class MainActivity extends AppCompatActivity {
                     loadMainMenu();
                 }
                 else if (sessionData.getClickedFragment() == 2) {
-                    loadGameBoard();
+                    if (sessionData.getGridSize() == 0) {
+                        loadGameBoard();
+                    }
+                    else if (sessionData.getGridSize() == 1) {
+                        loadGameBoard4x4();
+                    }
+                    else {
+                        loadGameBoard5x5();
+                    }
                 }
                 else if (sessionData.getClickedFragment() == 3) {
                     loadPlayerCreation();
@@ -46,10 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     loadPlayerStats();
                 }
                 else if (sessionData.getClickedFragment() == 5) {
-                    loadGameBoard4x4();
-                }
-                else if (sessionData.getClickedFragment() == 6) {
-                    loadGameBoard5x5();
+                    loadSettingsPage();
                 }
             }
         });
@@ -128,6 +135,18 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             fm.beginTransaction().replace(R.id.first_f_container, statFrag).commit();
+        }
+    }
+
+    private void loadSettingsPage() {
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment frag = fm.findFragmentById(R.id.first_f_container);
+
+        if (frag == null) {
+            fm.beginTransaction().add(R.id.first_f_container, settingsFrag).commit();
+        }
+        else {
+            fm.beginTransaction().replace(R.id.first_f_container, settingsFrag).commit();
         }
     }
 }
