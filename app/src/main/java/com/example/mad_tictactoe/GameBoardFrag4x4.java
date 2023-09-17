@@ -103,6 +103,13 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
 
         gamestate = new int[]{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}; //Reset Game
 
+        if (sessionData.getGameMode() == 1) {
+            playerVsPlayer = false;
+        }
+        if (sessionData.getWinCondition() == 1) {
+            fourInARowWinCond = true;
+        }
+
         buttonList[0] = rootView.findViewById(R.id.button4x4_0);
         buttonList[1] = rootView.findViewById(R.id.button4x4_1);
         buttonList[2] = rootView.findViewById(R.id.button4x4_2);

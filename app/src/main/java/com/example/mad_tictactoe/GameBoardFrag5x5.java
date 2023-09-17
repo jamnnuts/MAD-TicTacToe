@@ -112,6 +112,19 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
 
         gamestate = new int[]{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}; //Reset Game
 
+        if (sessionData.getGameMode() == 1) {
+            playerVsPlayer = false;
+        }
+        if (sessionData.getWinCondition() == 1) {
+            fourInARowWinCond = true;
+            fiveInARowWinCond = false;
+        }
+        else if (sessionData.getWinCondition() == 2) {
+            fourInARowWinCond = false;
+            fiveInARowWinCond = true;
+        }
+
+
         buttonList[0] = rootView.findViewById(R.id.button5x5_0);
         buttonList[1] = rootView.findViewById(R.id.button5x5_1);
         buttonList[2] = rootView.findViewById(R.id.button5x5_2);

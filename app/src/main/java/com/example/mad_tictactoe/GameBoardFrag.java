@@ -97,6 +97,10 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
         gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
 
+        if (sessionData.getGameMode() == 1) {
+            playerVsPlayer = false;
+        }
+
         buttonList[0] = rootView.findViewById(R.id.button3x3_0);
         buttonList[1] = rootView.findViewById(R.id.button3x3_1);
         buttonList[2] = rootView.findViewById(R.id.button3x3_2);

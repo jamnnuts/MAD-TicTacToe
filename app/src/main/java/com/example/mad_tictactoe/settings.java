@@ -64,13 +64,57 @@ public class settings extends Fragment {
         Button xomarker = view.findViewById(R.id.xomarkers);
         Button custommarker = view.findViewById(R.id.customiconmarkers);
 
+        Button pvpCondition = view.findViewById(R.id.PVP);
+        Button pveCondition = view.findViewById(R.id.PVE);
+
         Button returnToMenu = view.findViewById(R.id.return3);
+
+        if (sessionData.getGridSize() == 0) {
+            b3x3.setBackgroundColor(Color.parseColor("#5b39c6")); // getting previous configuration of settings
+            b4x4.setBackgroundColor(Color.parseColor("#AAAFB4"));
+            b5x5.setBackgroundColor(Color.parseColor("#AAAFB4"));
+        }
+        else if (sessionData.getGridSize() == 1) {
+            b3x3.setBackgroundColor(Color.parseColor("#AAAFB4"));
+            b4x4.setBackgroundColor(Color.parseColor("#5b39c6"));
+            b5x5.setBackgroundColor(Color.parseColor("#AAAFB4"));
+        }
+        else {
+            b3x3.setBackgroundColor(Color.parseColor("#AAAFB4"));
+            b4x4.setBackgroundColor(Color.parseColor("#AAAFB4"));
+            b5x5.setBackgroundColor(Color.parseColor("#5b39c6"));
+        }
+
+        if (sessionData.getGameMode() == 0) {
+            pvpCondition.setBackgroundColor(Color.parseColor("#5b39c6"));
+            pveCondition.setBackgroundColor(Color.parseColor("#AAAFB4"));
+        }
+        else {
+            pvpCondition.setBackgroundColor(Color.parseColor("#AAAFB4"));
+            pveCondition.setBackgroundColor(Color.parseColor("#5b39c6"));
+        }
+
+        if (sessionData.getWinCondition() == 0) {
+            w3x3.setBackgroundColor(Color.parseColor("#5b39c6"));
+            w4x4.setBackgroundColor(Color.parseColor("#AAAFB4"));
+            w5x5.setBackgroundColor(Color.parseColor("#AAAFB4"));
+        }
+        else if (sessionData.getWinCondition() == 1) {
+            w4x4.setBackgroundColor(Color.parseColor("#5b39c6"));
+            w3x3.setBackgroundColor(Color.parseColor("#AAAFB4"));
+            w5x5.setBackgroundColor(Color.parseColor("#AAAFB4"));
+        }
+        else {
+            w5x5.setBackgroundColor(Color.parseColor("#5b39c6"));
+            w4x4.setBackgroundColor(Color.parseColor("#AAAFB4"));
+            w3x3.setBackgroundColor(Color.parseColor("#AAAFB4"));
+        }
         b3x3.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                b3x3.setBackgroundColor(Color.parseColor("#5b39c6"));
+                b3x3.setBackgroundColor(Color.parseColor("#5b39c6")); //Setting Clicked button to purple and rest to grayed out, this will continue for all button presses
                 b4x4.setBackgroundColor(Color.parseColor("#AAAFB4"));
                 b5x5.setBackgroundColor(Color.parseColor("#AAAFB4"));
                 sessionData.setGridSize(0);
@@ -135,6 +179,24 @@ public class settings extends Fragment {
                 w4x4.setBackgroundColor(Color.parseColor("#AAAFB4"));
                 w3x3.setBackgroundColor(Color.parseColor("#AAAFB4"));
                 sessionData.setWinCondition(2);
+            }
+        });
+
+        pvpCondition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pvpCondition.setBackgroundColor(Color.parseColor("#5b39c6"));
+                pveCondition.setBackgroundColor(Color.parseColor("#AAAFB4"));
+                sessionData.setGameMode(0);
+            }
+        });
+
+        pveCondition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pveCondition.setBackgroundColor(Color.parseColor("#5b39c6"));
+                pvpCondition.setBackgroundColor(Color.parseColor("#AAAFB4"));
+                sessionData.setGameMode(1);
             }
         });
 

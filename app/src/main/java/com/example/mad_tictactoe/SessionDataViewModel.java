@@ -20,6 +20,10 @@ import androidx.lifecycle.ViewModel;
 *  0 = 3 in a row = default
 *  1 = 4 in a row
 *  2 = 5 in a row
+*
+*  gameMode: Chooses between PVP or PVE (Player vs AI)
+*  0 = PVP = default
+*  1 = PVE
 * */
 public class SessionDataViewModel extends ViewModel {
 
@@ -29,16 +33,20 @@ public class SessionDataViewModel extends ViewModel {
     public MutableLiveData<Integer> gridSize;
     public MutableLiveData<Integer> winCondition;
 
+    public MutableLiveData<Integer> gameMode;
+
     public SessionDataViewModel() {
         clickedFragment = new MutableLiveData<Integer>();
         gridSize = new MutableLiveData<Integer>();
         winCondition = new MutableLiveData<Integer>();
         playerOne = new MutableLiveData<Player>();
         playerTwo = new MutableLiveData<Player>();
+        gameMode = new MutableLiveData<Integer>();
 
         clickedFragment.setValue(0);
         gridSize.setValue(0);
         winCondition.setValue(0);
+        gameMode.setValue(0);
         playerOne.setValue(new Player("Player 1"));
         playerTwo.setValue(new Player("Player 2"));
     }
@@ -53,6 +61,10 @@ public class SessionDataViewModel extends ViewModel {
     public int getGridSize() { return gridSize.getValue();}
     public void setGridSize(int value) { gridSize.setValue(value);}
     public int getWinCondition() {return winCondition.getValue();}
-    public void setWinCondition(int value) {gridSize.setValue(value);}
+    public void setWinCondition(int value) {winCondition.setValue(value);}
+
+    public int getGameMode() {return gameMode.getValue();}
+
+    public void setGameMode(int value) {gameMode.setValue(value);}
 
 }
