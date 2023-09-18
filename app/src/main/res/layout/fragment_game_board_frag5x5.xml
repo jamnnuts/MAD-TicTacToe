@@ -16,11 +16,11 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/HorizGuide80"
+            android:id="@+id/HorizGuide85"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.80" />
+            app:layout_constraintGuide_percent="0.85" />
 
         <Button
             android:id="@+id/returnToMenuButton5x5"
@@ -30,7 +30,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/VertGuide50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/HorizGuide80" />
+            app:layout_constraintTop_toTopOf="@+id/HorizGuide85" />
 
         <Button
             android:id="@+id/resetButton5x5"
@@ -40,7 +40,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/VertGuide50"
-            app:layout_constraintTop_toTopOf="@id/HorizGuide80" />
+            app:layout_constraintTop_toTopOf="@id/HorizGuide85" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGuide20"
@@ -116,7 +116,7 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/HorizGuide80"
+        app:layout_constraintBottom_toTopOf="@id/HorizGuide85"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/HorizGuide20">
@@ -178,7 +178,7 @@
             app:layout_constraintGuide_percent="0.40" />
         <ImageView
             android:id="@+id/grid5x5"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"

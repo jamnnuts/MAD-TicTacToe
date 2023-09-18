@@ -67,6 +67,7 @@ public class MainMenuFrag extends Fragment {
         Button playButton = rootView.findViewById(R.id.playButton);
         Button createPlayerButton = rootView.findViewById(R.id.playerCreationButton);
         Button statButton = rootView.findViewById(R.id.statButton);
+        Button settingsButton = rootView.findViewById(R.id.settingsButton);
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +90,13 @@ public class MainMenuFrag extends Fragment {
             public void onClick(View view) {
 
                 sessionData.setClickedFragment(4);
+            }
+        });
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sessionData.setClickedFragment(5);
             }
         });
 

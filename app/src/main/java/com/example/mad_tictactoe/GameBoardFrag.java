@@ -5,6 +5,8 @@ import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -17,7 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,12 +45,14 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private Button[] buttonList = new Button[9];
     private TextView playerTurn;
     private Stack<Integer> undoMoves = new Stack<Integer>();
+    private int rounds;
 
-        private int rounds;
-
+    private boolean playerVsPlayer = true; //Activation boolean for bot game or playervsplayer game **REMEMBER TO CHANGE WHEN SETTINGS PAGE IS IMPLEMENTED
     private boolean playerOneActive;
     ArrayList avatarArray = new ArrayList<Integer>();
 
+
+    private MutableLiveData<Boolean> botsTurn;
 
     public GameBoardFrag() {
         // Required empty public constructor
@@ -80,8 +86,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_game_board3x3, container, false);
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton3x3);
@@ -89,7 +94,11 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         Button undoButton = rootView.findViewById(R.id.UndoButton);
         ImageView p1Avatar = rootView.findViewById(R.id.p1Avatar);
         ImageView p2Avatar = rootView.findViewById(R.id.p2Avatar);
+        Random rand = new Random();
+      
         playerTurn = rootView.findViewById(R.id.Status);
+        botsTurn = new MutableLiveData<Boolean>();
+        botsTurn.setValue(false);
 
         avatarArray.add(R.drawable.avatar1);
         avatarArray.add(R.drawable.avatar2);
@@ -101,8 +110,13 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         p1Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerOne.getValue().getAvatarID()));
         p2Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerTwo.getValue().getAvatarID()));
         playerTurn.setText(sessionData.playerOne.getValue().getPlayerName() + "'s turn");
+        playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
 
         gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
+
+        if (sessionData.getGameMode() == 1) {
+            playerVsPlayer = false;
+        }
 
         buttonList[0] = rootView.findViewById(R.id.button3x3_0);
         buttonList[1] = rootView.findViewById(R.id.button3x3_1);
@@ -122,6 +136,27 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         playerOneActive = true;
         rounds = 0;
 
+        if (!playerVsPlayer) {
+            botsTurn.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+                @Override
+                public void onChanged(Boolean aBoolean) {
+                    if (botsTurn.getValue() == true) {
+                        int emptyButtonIndex = 0;
+                        boolean emptyIndexFound = false;
+                        while (!emptyIndexFound) { //Search for an empty grid cell
+                            emptyButtonIndex = rand.nextInt(9);
+                            if (gamestate[emptyButtonIndex] == 2) {
+                                emptyIndexFound = true;
+                            }
+                        }
+                        buttonList[emptyButtonIndex].performClick();
+                        botsTurn.setValue(false);
+                    }
+                }
+            });
+
+        }
+
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,6 +172,9 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 for (int i = 0; i < buttonList.length; i++) {
                     buttonList[i].setText("");
                 }
+                playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+                playerOneActive = true;
+                botsTurn.setValue(false);
             }
         });
 
@@ -155,6 +193,19 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 gamestate[lastMove] = 2;
                 rounds--;
 
+                if (playerOneActive) {
+                    if (playerVsPlayer) {
+                        playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
+                    }
+                    else {
+                        playerTurn.setText("Bot's turn");
+                    }
+                    playerOneActive = !playerOneActive;
+                }
+                else {
+                    playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+                    playerOneActive = !playerOneActive;
+                }
             }
         });
 
@@ -175,63 +226,114 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
         int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
 
-        if (playerOneActive) {
-            ((Button) view).setText("X");
-            ((Button) view).setTextSize(30);
-            ((Button) view).setTextColor(Color.parseColor("#FFA500"));
-            playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
-
-            gamestate[gameStatePointer] = 0;
-            undoMoves.push(gameStatePointer);
-
-        } else {
-            ((Button) view).setText("O");
-            ((Button) view).setTextSize(30);
-            ((Button) view).setTextColor(Color.parseColor("#0000FF"));
-            playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
-
-            gamestate[gameStatePointer] = 1;
-            undoMoves.push(gameStatePointer);
-
-        }
-
-        rounds++;
-
-        if (checkWinner()) {
+        if (playerVsPlayer) { //Player Mode
             if (playerOneActive) {
-                Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                ((Button) view).setText("X");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
+
+                gamestate[gameStatePointer] = 0;
+                undoMoves.push(gameStatePointer);
+
+            } else {
+                ((Button) view).setText("O");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
+
+                gamestate[gameStatePointer] = 1;
+                undoMoves.push(gameStatePointer);
+
+            }
+
+            rounds++;
+
+            if (checkWinner()) {
+                if (playerOneActive) {
+                    Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                    playerTurn.setText("Game over!");
+
+                    sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
+                    sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+
+                    sessionData.playerTwo.getValue().setLosses(sessionData.playerTwo.getValue().getLosses() + 1);
+                    sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
+                } else {
+                    Toast.makeText(getActivity(), sessionData.playerTwo.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                    playerTurn.setText("Game over!");
+
+                    sessionData.playerTwo.getValue().setWins(sessionData.playerTwo.getValue().getWins() + 1);
+                    sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
+
+                    sessionData.playerOne.getValue().setLosses(sessionData.playerOne.getValue().getLosses() + 1);
+                    sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                }
+            } else if (rounds == 9) {
+                Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
                 playerTurn.setText("Game over!");
 
-                sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
-                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
+                sessionData.playerTwo.getValue().setDraws(sessionData.playerTwo.getValue().getDraws() + 1);
 
-                sessionData.playerTwo.getValue().setLosses(sessionData.playerTwo.getValue().getLosses() + 1);
+                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
                 sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
             } else {
-                Toast.makeText(getActivity(), sessionData.playerTwo.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
-                playerTurn.setText("Game over!");
-
-                sessionData.playerTwo.getValue().setWins(sessionData.playerTwo.getValue().getWins() + 1);
-                sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
-
-                sessionData.playerOne.getValue().setLosses(sessionData.playerOne.getValue().getLosses() + 1);
-                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                playerOneActive = !playerOneActive;
             }
         }
-        else if (rounds == 9) {
-            Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
-            playerTurn.setText("Game over!");
 
-            sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
-            sessionData.playerTwo.getValue().setDraws(sessionData.playerTwo.getValue().getDraws() + 1);
+        else { //Player vs AI mode
+            if (playerOneActive) {
+                ((Button) view).setText("X");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                playerTurn.setText("Bot's turn");
 
-            sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
-            sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
+                gamestate[gameStatePointer] = 0;
+                undoMoves.push(gameStatePointer);
+            }
+            else {
+                ((Button) view).setText("O");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
+
+                gamestate[gameStatePointer] = 1;
+                undoMoves.push(gameStatePointer);
+            }
+            rounds++;
+
+            if (checkWinner()) {
+                if (playerOneActive) {
+                    Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                    playerTurn.setText("Game over!");
+
+                    sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
+                    sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+
+                } else {
+                    Toast.makeText(getActivity(),  "Bot wins!", Toast.LENGTH_SHORT).show();
+                    playerTurn.setText("Game over!");
+
+                    sessionData.playerOne.getValue().setLosses(sessionData.playerOne.getValue().getLosses() + 1);
+                    sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                }
+            } else if (rounds == 9) {
+                Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
+                playerTurn.setText("Game over!");
+
+                sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
+                sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+            }
+            else if (playerOneActive) {
+                playerOneActive = !playerOneActive;
+                botsTurn.setValue(true);
+            }
+            else {
+                playerOneActive = !playerOneActive;
+            }
         }
-        else {
-            playerOneActive = !playerOneActive;
-        }
-
     }
 
     private boolean checkWinner() {
