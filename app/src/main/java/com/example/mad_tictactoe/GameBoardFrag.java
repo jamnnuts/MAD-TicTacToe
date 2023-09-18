@@ -1,6 +1,7 @@
 package com.example.mad_tictactoe;
 
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,9 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 import java.util.concurrent.TimeUnit;
@@ -46,6 +49,8 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
     private boolean playerVsPlayer = true; //Activation boolean for bot game or playervsplayer game **REMEMBER TO CHANGE WHEN SETTINGS PAGE IS IMPLEMENTED
     private boolean playerOneActive;
+    ArrayList avatarArray = new ArrayList<Integer>();
+
 
     private MutableLiveData<Boolean> botsTurn;
 
@@ -87,12 +92,24 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton3x3);
         Button resetButton = rootView.findViewById(R.id.resetButton3x3);
         Button undoButton = rootView.findViewById(R.id.UndoButton);
+        ImageView p1Avatar = rootView.findViewById(R.id.p1Avatar);
+        ImageView p2Avatar = rootView.findViewById(R.id.p2Avatar);
         Random rand = new Random();
-
+      
         playerTurn = rootView.findViewById(R.id.Status);
         botsTurn = new MutableLiveData<Boolean>();
         botsTurn.setValue(false);
 
+        avatarArray.add(R.drawable.avatar1);
+        avatarArray.add(R.drawable.avatar2);
+        avatarArray.add(R.drawable.avatar3);
+        avatarArray.add(R.drawable.avatar4);
+        avatarArray.add(R.drawable.avatar5);
+        avatarArray.add(R.drawable.avatar6);
+
+        p1Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerOne.getValue().getAvatarID()));
+        p2Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerTwo.getValue().getAvatarID()));
+        playerTurn.setText(sessionData.playerOne.getValue().getPlayerName() + "'s turn");
         playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
 
         gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game

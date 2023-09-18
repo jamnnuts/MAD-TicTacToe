@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import java.util.ArrayList;
  */
 public class PlayerCreationFrag extends Fragment {
     ArrayList<Integer> avatarArray;
+    private int arrayRef = 0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -84,41 +86,73 @@ public class PlayerCreationFrag extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_player_creation, container, false);
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
 
-        RecyclerView rv = rootView.findViewById(R.id.recView);
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(rootView.getContext(),LinearLayoutManager.HORIZONTAL, false));
-        AvatarAdapter adapter = new AvatarAdapter(avatarArray);
-        rv.setAdapter(adapter);
-
         Button returnButton = rootView.findViewById(R.id.returnButton2);
         Button player1SaveButton = rootView.findViewById(R.id.player1saveButton);
         Button player2SaveButton = rootView.findViewById(R.id.player2saveButton);
+        Button leftOption = rootView.findViewById(R.id.goLeft);
+        Button rightOption = rootView.findViewById(R.id.goRight);
         EditText playerName = rootView.findViewById(R.id.playerName);
         TextView p1Light = rootView.findViewById(R.id.firstPlayerLight);
         TextView p2Light = rootView.findViewById(R.id.secondPlayerLight);
         TextView p1NameIndicator = rootView.findViewById(R.id.playerOneName);
         TextView p2NameIndicator = rootView.findViewById(R.id.playerTwoName);
+        ImageView playerAvatar = rootView.findViewById(R.id.avatarImage);
 
+        playerAvatar.setImageResource(avatarArray.get(0));
 
+        if(sessionData.playerOne.getValue().getPlayerName().toString() != "Player 1") {
+            p1Light.setTextColor(Color.GREEN);
+            p1NameIndicator.setText(sessionData.playerOne.getValue().getPlayerName().toString());
+        }
+        if(sessionData.playerTwo.getValue().getPlayerName().toString() != "Player 2") {
+            p2Light.setTextColor(Color.GREEN);
+            p2NameIndicator.setText(sessionData.playerTwo.getValue().getPlayerName().toString());
+        }
 
         player1SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                   sessionData.playerOne.getValue().setPlayerName(playerName.getText().toString());
-                   p1Light.setTextColor(Color.GREEN);
-                   p1NameIndicator.setText(sessionData.playerOne.getValue().getPlayerName().toString());
-                   Toast.makeText(getActivity(), "Player 1 created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
+                sessionData.playerOne.getValue().setPlayerName(playerName.getText().toString());
+                sessionData.playerOne.getValue().setAvatarID(arrayRef);
+                p1Light.setTextColor(Color.GREEN);
+                p1NameIndicator.setText(sessionData.playerOne.getValue().getPlayerName().toString());
+                Toast.makeText(getActivity(), "Player 1 created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
             }
         });
         player2SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sessionData.playerTwo.getValue().setPlayerName(playerName.getText().toString());
+                sessionData.playerTwo.getValue().setAvatarID(arrayRef);
                 p2Light.setTextColor(Color.GREEN);
                 p2NameIndicator.setText(sessionData.playerTwo.getValue().getPlayerName().toString());
                 Toast.makeText(getActivity(), "Player 2 created: " + sessionData.playerTwo.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        leftOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(arrayRef > 0)
+                {
+                    arrayRef--;
+                    playerAvatar.setImageResource(avatarArray.get(arrayRef));
+                }
+            }
+        });
+
+        rightOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(arrayRef < 5)
+                {
+                    arrayRef++;
+                    playerAvatar.setImageResource(avatarArray.get(arrayRef));
+                }
+            }
+        });
+
+
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
