@@ -18,7 +18,8 @@ import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Stack;
-import java.util.concurrent.TimeUnit;
+
+import android.os.CountDownTimer;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,8 +42,12 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private  int[] gamestate = {2,2,2,2,2,2,2,2,2};
     private Button[] buttonList = new Button[9];
     private TextView playerTurn;
+    private TextView p1Timer;
+    private Button p2Timer;
     private Stack<Integer> undoMoves = new Stack<Integer>();
     private int rounds;
+    private int counter = 30;
+    private int startTimer = 0;
 
     private boolean playerVsPlayer = true; //Activation boolean for bot game or playervsplayer game **REMEMBER TO CHANGE WHEN SETTINGS PAGE IS IMPLEMENTED
     private boolean playerOneActive;
@@ -88,6 +93,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton3x3);
         Button resetButton = rootView.findViewById(R.id.resetButton3x3);
         Button undoButton = rootView.findViewById(R.id.UndoButton);
+        p1Timer = rootView.findViewById(R.id.timer1);
         Random rand = new Random();
 
         playerTurn = rootView.findViewById(R.id.Status);
@@ -145,18 +151,19 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         });
 
         resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rounds = 0;
-                gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
-                for (int i = 0; i < buttonList.length; i++) {
-                    buttonList[i].setText("");
-                }
-                playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
-                playerOneActive = true;
-                botsTurn.setValue(false);
-            }
-        });
+           @Override
+           public void onClick(View view) {
+               rounds = 0;
+               gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
+               for (int i = 0; i < buttonList.length; i++) {
+                   buttonList[i].setText("");
+               }
+               playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
+               playerOneActive = true;
+               botsTurn.setValue(false);
+               p1Timer.setVisibility(View.VISIBLE);
+           }
+       });
 
         undoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,6 +202,22 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
+        if(startTimer == 0) {
+            new CountDownTimer(30000, 1000) {
+                @Override
+                public void onTick(long l) {
+                    p1Timer.setText(String.valueOf(counter));
+                    counter--;
+                }
+                @Override
+                public void onFinish() {
+                    p1Timer.setText("DONE!");
+                }
+
+            }
+            .start();
+            startTimer = 1;
+        }
 
         if (!((Button) view).getText().toString().equals("")) {
             return;
@@ -233,6 +256,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 if (playerOneActive) {
                     Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
                     playerTurn.setText("Game over!");
+                    p1Timer.setVisibility(View.INVISIBLE);
 
                     sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
                     sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
@@ -242,6 +266,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 } else {
                     Toast.makeText(getActivity(), sessionData.playerTwo.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
                     playerTurn.setText("Game over!");
+                    p1Timer.setVisibility(View.INVISIBLE);
 
                     sessionData.playerTwo.getValue().setWins(sessionData.playerTwo.getValue().getWins() + 1);
                     sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
@@ -252,6 +277,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
             } else if (rounds == 9) {
                 Toast.makeText(getActivity(), "No winner, Game result = Draw.", Toast.LENGTH_SHORT).show();
                 playerTurn.setText("Game over!");
+                p1Timer.setVisibility(View.INVISIBLE);
 
                 sessionData.playerOne.getValue().setDraws(sessionData.playerOne.getValue().getDraws() + 1);
                 sessionData.playerTwo.getValue().setDraws(sessionData.playerTwo.getValue().getDraws() + 1);
