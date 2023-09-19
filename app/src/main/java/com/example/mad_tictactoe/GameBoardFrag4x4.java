@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
     private Button[] buttonList = new Button[16];
 
     private TextView playerTurn;
+    private TextView p1Timer;
     private Stack<Integer> undoMoves = new Stack<Integer>();
     private int rounds;
     private boolean playerOneActive;
@@ -54,6 +56,9 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
 
     private boolean playerVsPlayer = true; //Activation boolean for bot game or playervsplayer game **REMEMBER TO CHANGE WHEN SETTINGS PAGE IS IMPLEMENTED
     private MutableLiveData<Boolean> botsTurn;
+    private MutableLiveData<Boolean> forfeitTimerWin;
+    private int counter = 30;
+    private int startTimer = 0;
 
 
     // TODO: Rename and change types of parameters
@@ -99,6 +104,7 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton4x4);
         Button resetButton = rootView.findViewById(R.id.resetButton4x4);
         Button undoButton = rootView.findViewById(R.id.Undo);
+        p1Timer = rootView.findViewById(R.id.timer1);
         ImageView p1Avatar = rootView.findViewById(R.id.p1Avatar);
         ImageView p2Avatar = rootView.findViewById(R.id.p2Avatar);
         playerTurn = rootView.findViewById(R.id.Status);
@@ -124,7 +130,9 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
 
         playerTurn = rootView.findViewById(R.id.Status);
         botsTurn = new MutableLiveData<Boolean>();
+        forfeitTimerWin = new MutableLiveData<Boolean>();
         botsTurn.setValue(false);
+        forfeitTimerWin.setValue(false);
 
         playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
 
@@ -200,6 +208,10 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
                 playerTurn.setTextColor(Color.parseColor("#7EFB02"));
                 playerOneActive = true;
                 botsTurn.setValue(false);
+
+                forfeitTimerWin.setValue(false);
+                startTimer = 0;
+                counter = 30;
             }
         });
 
@@ -209,7 +221,7 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
                 if (rounds == 0) {
                     return;
                 }
-                else if (checkWinner()) {
+                else if (checkWinner() || forfeitTimerWin.getValue()) {
                     return;
                 }
 
@@ -217,6 +229,7 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
                 buttonList[lastMove].setText("");
                 gamestate[lastMove] = 2;
                 rounds--;
+                setTimer();
 
                 if (playerOneActive) {
                     if (playerVsPlayer) {
@@ -236,6 +249,39 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
             }
         });
 
+        forfeitTimerWin.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (forfeitTimerWin.getValue() == true) {
+                    if (playerVsPlayer) {
+                        if (playerOneActive) {
+                            Toast.makeText(getActivity(), "Time Ran Out, " + sessionData.playerTwo.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                            playerTurn.setText("Game over!");
+                            sessionData.playerOne.getValue().setLosses(sessionData.playerOne.getValue().getLosses() + 1);
+                            sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                            sessionData.playerTwo.getValue().setWins(sessionData.playerTwo.getValue().getWins() + 1);
+                            sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
+
+                        } else {
+                            Toast.makeText(getActivity(), "Time Ran Out, " + sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
+                            playerTurn.setText("Game over!");
+                            sessionData.playerTwo.getValue().setLosses(sessionData.playerTwo.getValue().getLosses() + 1);
+                            sessionData.playerTwo.getValue().setGamesPlayed(sessionData.playerTwo.getValue().getGamesPlayed() + 1);
+                            sessionData.playerOne.getValue().setWins(sessionData.playerOne.getValue().getWins() + 1);
+                            sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                        }
+
+                    }
+                    else {
+                        Toast.makeText(getActivity(), "Time Ran Out, Bot wins!", Toast.LENGTH_SHORT).show();
+                        playerTurn.setText("Game over!");
+                        sessionData.playerOne.getValue().setLosses(sessionData.playerOne.getValue().getLosses() + 1);
+                        sessionData.playerOne.getValue().setGamesPlayed(sessionData.playerOne.getValue().getGamesPlayed() + 1);
+                    }
+                }
+            }
+        });
+
         return rootView;
     }
 
@@ -245,13 +291,17 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
 
         if (!((Button) view).getText().toString().equals("")) {
             return;
-        } else if (checkWinner()) {
+        } else if (checkWinner() || forfeitTimerWin.getValue()) {
             return;
         }
+
+        setTimer();
 
         String buttonID = view.getResources().getResourceEntryName(view.getId());
 
         int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
+
+        counter = 30;     //resets timeer
 
         if (playerVsPlayer) { //Player Mode
             if (playerOneActive) {
@@ -287,10 +337,10 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
                 undoMoves.push(gameStatePointer);
 
             }
-
             rounds++;
 
             if (checkWinner()) {
+
                 if (playerOneActive) {
                     Toast.makeText(getActivity(), sessionData.playerOne.getValue().getPlayerName() + " wins!", Toast.LENGTH_SHORT).show();
                     playerTurn.setText("Game over!");
@@ -413,4 +463,31 @@ public class GameBoardFrag4x4 extends Fragment implements View.OnClickListener {
 
         return winnerDetected;
     }
+    private void setTimer() {
+        if(startTimer == 0) {
+            new CountDownTimer(30000, 1000) {
+                @Override
+                public void onTick(long l) {
+                    if (checkWinner()) {
+                        this.cancel();
+                    }
+                    p1Timer.setText(String.valueOf(counter));
+                    {
+                        p1Timer.setText(String.valueOf(counter));
+                    }
+                    counter--;
+
+                }
+                @Override
+                public void onFinish() {
+                    p1Timer.setText("DONE!");
+                    forfeitTimerWin.setValue(true);
+                }
+
+            }
+                    .start();
+            startTimer = 1;
+        }
+    }
+
 }
