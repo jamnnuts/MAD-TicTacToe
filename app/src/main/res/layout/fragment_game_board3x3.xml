@@ -49,27 +49,32 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hey_comic"
             android:text="Undo Move"
-            app:layout_constraintBottom_toTopOf="@id/gameBoard"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/displayLinearLayout" />
-  
+            app:layout_constraintEnd_toStartOf="@id/VertGuide50"
+            app:layout_constraintTop_toBottomOf="@id/displayLinearLayout"
+            app:layout_constraintBottom_toTopOf="@id/gameBoard"
+            />
+
         <TextView
             android:id="@+id/timer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/HorizGuide25"
-            app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="10dp"
-            android:text="make first move when ready"
-            app:layout_constraintTop_toTopOf="@+id/horizGuide15" />
-           
+            android:fontFamily="@font/hey_comic"
+            android:textSize="30dp"
+            android:text="30"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/VertGuide50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/displayLinearLayout"
+            app:layout_constraintBottom_toTopOf="@id/gameBoard"
+            />
+
         <LinearLayout
             android:id="@+id/displayLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,34 +84,30 @@
                 android:id="@+id/p1Avatar"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                app:layout_constraintBottom_toTopOf="@id/horizGuide15"
-                app:layout_constraintEnd_toStartOf="@id/Status"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/avatar1" />
+                tools:srcCompat="@drawable/avatar1"
+                android:layout_gravity="left"
+                android:layout_weight="1"/>
             <TextView
                 android:id="@+id/Status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Start!"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textSize="30sp"
+                android:layout_weight="1"
                 android:fontFamily="@font/hey_comic"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/horizGuide15"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                />
 
             <ImageView
                 android:id="@+id/p2Avatar"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                app:layout_constraintBottom_toTopOf="@id/horizGuide15"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/Status"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/avatar1" />
+                android:layout_weight="1"
+                tools:srcCompat="@drawable/avatar1"
+                android:layout_gravity="right"/>
 
         </LinearLayout>
 
