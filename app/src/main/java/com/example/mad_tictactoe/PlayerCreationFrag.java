@@ -29,7 +29,9 @@ import java.util.ArrayList;
  */
 public class PlayerCreationFrag extends Fragment {
     ArrayList<Integer> avatarArray;
+    ArrayList<Integer> markerArray;
     private int arrayRef = 0;
+    private int markerArrayRef = 0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,12 +78,21 @@ public class PlayerCreationFrag extends Fragment {
                              Bundle savedInstanceState) {
 
         avatarArray = new ArrayList<>();
+        markerArray = new ArrayList<>();
+
         avatarArray.add(R.drawable.avatar1);
         avatarArray.add(R.drawable.avatar2);
         avatarArray.add(R.drawable.avatar3);
         avatarArray.add(R.drawable.avatar4);
         avatarArray.add(R.drawable.avatar5);
         avatarArray.add(R.drawable.avatar6);
+
+        markerArray.add(R.drawable.marker1);
+        markerArray.add(R.drawable.marker2);
+        markerArray.add(R.drawable.marker3);
+        markerArray.add(R.drawable.marker4);
+        markerArray.add(R.drawable.marker5);
+        markerArray.add(R.drawable.marker6);
 
         View rootView = inflater.inflate(R.layout.fragment_player_creation, container, false);
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
@@ -97,6 +108,10 @@ public class PlayerCreationFrag extends Fragment {
         TextView p1NameIndicator = rootView.findViewById(R.id.playerOneName);
         TextView p2NameIndicator = rootView.findViewById(R.id.playerTwoName);
         ImageView playerAvatar = rootView.findViewById(R.id.avatarImage);
+        ImageView playerMarker = rootView.findViewById(R.id.markerImage);
+        Button leftMarkerOption = rootView.findViewById(R.id.goLeftMarker);
+        Button rightMarkerOption = rootView.findViewById(R.id.goRightMarker);
+
 
         playerAvatar.setImageResource(avatarArray.get(0));
 
@@ -114,6 +129,7 @@ public class PlayerCreationFrag extends Fragment {
             public void onClick(View view) {
                 sessionData.playerOne.getValue().setPlayerName(playerName.getText().toString());
                 sessionData.playerOne.getValue().setAvatarID(arrayRef);
+                sessionData.playerOne.getValue().setMarkerID(markerArrayRef);
                 p1Light.setTextColor(Color.GREEN);
                 p1NameIndicator.setText(sessionData.playerOne.getValue().getPlayerName().toString());
                 Toast.makeText(getActivity(), "Player 1 created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
@@ -124,6 +140,7 @@ public class PlayerCreationFrag extends Fragment {
             public void onClick(View view) {
                 sessionData.playerTwo.getValue().setPlayerName(playerName.getText().toString());
                 sessionData.playerTwo.getValue().setAvatarID(arrayRef);
+                sessionData.playerTwo.getValue().setMarkerID(markerArrayRef);
                 p2Light.setTextColor(Color.GREEN);
                 p2NameIndicator.setText(sessionData.playerTwo.getValue().getPlayerName().toString());
                 Toast.makeText(getActivity(), "Player 2 created: " + sessionData.playerTwo.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
@@ -152,6 +169,27 @@ public class PlayerCreationFrag extends Fragment {
             }
         });
 
+        leftMarkerOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(markerArrayRef > 0)
+                {
+                    markerArrayRef--;
+                    playerMarker.setImageResource(markerArray.get(markerArrayRef));
+                }
+            }
+        });
+
+        rightMarkerOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(markerArrayRef < 5)
+                {
+                    markerArrayRef++;
+                    playerMarker.setImageResource(markerArray.get(markerArrayRef));
+                }
+            }
+        });
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override

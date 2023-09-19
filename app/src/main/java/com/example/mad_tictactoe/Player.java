@@ -10,6 +10,7 @@ public class Player{
     public int losses;
     public int draws;
     public int avatarID;
+    public int markerID;
 
     public Player(String initialName) {
         this.playerName = initialName;
@@ -18,6 +19,7 @@ public class Player{
         this.losses = 0;
         this.draws = 0;
         this.avatarID = 0;
+        this.markerID = 0;
     }
 
     public String getPlayerName() {return playerName;}
@@ -26,11 +28,12 @@ public class Player{
     public int getLosses() {return losses;}
     public int getWins() {return wins;}
     public int getAvatarID() {return avatarID;}
+    public int getMarkerID() {return markerID;}
     public void setPlayerName(String playerName) {this.playerName = playerName;}
     public void setDraws(int draws) {this.draws = draws;}
     public void setGamesPlayed(int gamesPlayed) {this.gamesPlayed = gamesPlayed;}
     public void setLosses(int losses) {this.losses = losses;}
     public void setWins(int wins) {this.wins = wins;}
-    public void setAvatarID(int avatarID) {this.avatarID = avatarID;
-    }
+    public void setAvatarID(int avatarID) {this.avatarID = avatarID;}
+    public void setMarkerID(int markerID) {this.markerID = markerID;}
 }

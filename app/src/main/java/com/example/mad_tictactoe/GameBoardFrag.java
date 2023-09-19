@@ -1,6 +1,7 @@
 package com.example.mad_tictactoe;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -50,6 +51,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private boolean playerVsPlayer = true; //Activation boolean for bot game or playervsplayer game **REMEMBER TO CHANGE WHEN SETTINGS PAGE IS IMPLEMENTED
     private boolean playerOneActive;
     ArrayList avatarArray = new ArrayList<Integer>();
+    ArrayList markerArray = new ArrayList<Integer>();
 
 
     private MutableLiveData<Boolean> botsTurn;
@@ -107,9 +109,15 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         avatarArray.add(R.drawable.avatar5);
         avatarArray.add(R.drawable.avatar6);
 
+        markerArray.add(R.drawable.marker1);
+        markerArray.add(R.drawable.marker2);
+        markerArray.add(R.drawable.marker3);
+        markerArray.add(R.drawable.marker4);
+        markerArray.add(R.drawable.marker5);
+        markerArray.add(R.drawable.marker6);
+
         p1Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerOne.getValue().getAvatarID()));
         p2Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerTwo.getValue().getAvatarID()));
-        playerTurn.setText(sessionData.playerOne.getValue().getPlayerName() + "'s turn");
         playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
 
         gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
@@ -228,18 +236,14 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
         if (playerVsPlayer) { //Player Mode
             if (playerOneActive) {
-                ((Button) view).setText("X");
-                ((Button) view).setTextSize(30);
-                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
                 playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
 
                 gamestate[gameStatePointer] = 0;
                 undoMoves.push(gameStatePointer);
 
             } else {
-                ((Button) view).setText("O");
-                ((Button) view).setTextSize(30);
-                ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerTwo.getValue().getMarkerID()));
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
 
                 gamestate[gameStatePointer] = 1;
