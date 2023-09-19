@@ -240,14 +240,15 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
         if (playerVsPlayer) { //Player Mode
             if (playerOneActive) {
+                if (sessionData.playerOne.getValue().getMarkerID() != 100) {
+                    ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
+                }
+                else {
+                    ((Button) view).setText("X");
+                    ((Button) view).setTextSize(30);
+                    ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                }
 
-                /* Need to add if wrapper to swap between default/custom markers and link to settings page
-                ((Button) view).setText("X");
-                ((Button) view).setTextSize(30);
-                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
-                */
-
-                ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
                 playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
                 playerTurn.setTextColor(Color.parseColor("#7EFB02"));
 
@@ -255,13 +256,15 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 undoMoves.push(gameStatePointer);
 
             } else {
-               /* Need to add if wrapper to swap between default/custom markers and link to settings page
-                ((Button) view).setText("O");
-                ((Button) view).setTextSize(30);
-                ((Button) view).setTextColor(Color.parseColor("#0000FF"));
-                */
+                if (sessionData.playerTwo.getValue().getMarkerID() != 100) {
+                    ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerTwo.getValue().getMarkerID()));
+                }
+                else {
+                    ((Button) view).setText("0");
+                    ((Button) view).setTextSize(30);
+                    ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                }
 
-                ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerTwo.getValue().getMarkerID()));
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
                 playerTurn.setTextColor(Color.parseColor("#FB0202"));
 
@@ -308,13 +311,15 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
         else { //Player vs AI mode
             if (playerOneActive) {
-                 /* Need to add if wrapper to swap between default/custom markers and link to settings page
-                ((Button) view).setText("X");
-                ((Button) view).setTextSize(30);
-                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
-                */
+                if (sessionData.playerOne.getValue().getMarkerID() != 100) {
+                    ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
+                }
+                else {
+                    ((Button) view).setText("X");
+                    ((Button) view).setTextSize(30);
+                    ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                }
 
-                ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
                 playerTurn.setText("Bot's turn");
                 playerTurn.setTextColor(Color.parseColor("#7EFB02"));
 

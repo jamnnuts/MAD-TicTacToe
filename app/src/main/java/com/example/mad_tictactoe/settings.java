@@ -61,9 +61,6 @@ public class settings extends Fragment {
         Button w4x4 = view.findViewById(R.id.win4x4);
         Button w5x5 = view.findViewById(R.id.win5x5);
 
-        Button xomarker = view.findViewById(R.id.xomarkers);
-        Button custommarker = view.findViewById(R.id.customiconmarkers);
-
         Button pvpCondition = view.findViewById(R.id.PVP);
         Button pveCondition = view.findViewById(R.id.PVE);
 

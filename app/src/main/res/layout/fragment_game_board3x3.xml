@@ -43,19 +43,6 @@
             app:layout_constraintStart_toEndOf="@id/VertGuide50"
             app:layout_constraintTop_toTopOf="@id/HorizGuide85" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/HorizGuide25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizGuide15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="734dp" />
 
         <Button
             android:id="@+id/UndoButton"
@@ -63,18 +50,20 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hey_comic"
             android:text="Undo Move"
-            app:layout_constraintBottom_toTopOf="@+id/HorizGuide25"
-            app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
+            app:layout_constraintBottom_toTopOf="@id/gameBoard"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/horizGuide15" />
+            app:layout_constraintTop_toBottomOf="@id/displayLinearLayout" />
 
         <LinearLayout
+            android:id="@+id/displayLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/horizGuide15"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/UndoButton">
 
             <ImageView
                 android:id="@+id/p1Avatar"
@@ -112,11 +101,12 @@
         </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gameBoard"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/HorizGuide25"
+        app:layout_constraintTop_toBottomOf="@id/UndoButton"
         app:layout_constraintBottom_toTopOf="@id/HorizGuide85">
 
         <androidx.constraintlayout.widget.Guideline

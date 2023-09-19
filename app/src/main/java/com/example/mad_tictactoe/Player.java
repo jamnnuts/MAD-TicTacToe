@@ -19,7 +19,7 @@ public class Player{
         this.losses = 0;
         this.draws = 0;
         this.avatarID = 0;
-        this.markerID = 0;
+        this.markerID = 100;
     }
 
     public String getPlayerName() {return playerName;}

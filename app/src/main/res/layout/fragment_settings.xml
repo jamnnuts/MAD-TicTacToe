@@ -170,48 +170,7 @@
                 android:textSize="15dp"
                 android:layout_weight="0" />
         </LinearLayout>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Player Markers"
-            android:gravity="center"
-            android:fontFamily="@font/hey_comic"
-            android:textSize="20dp"
-            android:textColor="@android:color/holo_green_dark"/>
-        <View
 
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="5dp"
-            android:background="@android:color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingTop="100dp"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/xomarkers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="    XO    "
-                android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
-                android:layout_weight="0" />
-
-            <Button
-                android:id="@+id/customiconmarkers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Custom"
-                android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
-                android:layout_weight="0" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

@@ -130,6 +130,7 @@ public class PlayerCreationFrag extends Fragment {
                 sessionData.playerOne.getValue().setPlayerName(playerName.getText().toString());
                 sessionData.playerOne.getValue().setAvatarID(arrayRef);
                 sessionData.playerOne.getValue().setMarkerID(markerArrayRef);
+
                 p1Light.setTextColor(Color.GREEN);
                 p1NameIndicator.setText(sessionData.playerOne.getValue().getPlayerName().toString());
                 Toast.makeText(getActivity(), "Player 1 created: " + sessionData.playerOne.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();
@@ -141,6 +142,7 @@ public class PlayerCreationFrag extends Fragment {
                 sessionData.playerTwo.getValue().setPlayerName(playerName.getText().toString());
                 sessionData.playerTwo.getValue().setAvatarID(arrayRef);
                 sessionData.playerTwo.getValue().setMarkerID(markerArrayRef);
+
                 p2Light.setTextColor(Color.GREEN);
                 p2NameIndicator.setText(sessionData.playerTwo.getValue().getPlayerName().toString());
                 Toast.makeText(getActivity(), "Player 2 created: " + sessionData.playerTwo.getValue().getPlayerName(), Toast.LENGTH_SHORT).show();

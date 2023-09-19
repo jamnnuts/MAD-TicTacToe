@@ -44,19 +44,6 @@
             app:layout_constraintStart_toEndOf="@id/VertGuide50"
             app:layout_constraintTop_toTopOf="@id/HorizGuide85" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/HorizGuide20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.20" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizGuide10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="86dp" />
 
         <Button
             android:id="@+id/Undo"
@@ -64,19 +51,19 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hey_comic"
             android:text="Undo Move"
-            app:layout_constraintBottom_toTopOf="@+id/HorizGuide20"
-            app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
+            app:layout_constraintBottom_toTopOf="@id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/horizGuide10" />
+            app:layout_constraintTop_toBottomOf="@id/avatarAndStatus" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id ="@+id/avatarAndStatus"
         android:orientation="horizontal"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/horizGuide10"
+        app:layout_constraintBottom_toTopOf="@id/Undo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -124,7 +111,7 @@
         app:layout_constraintBottom_toTopOf="@id/HorizGuide85"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/HorizGuide20">
+        app:layout_constraintTop_toBottomOf="@id/Undo">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VertGridLine20"
