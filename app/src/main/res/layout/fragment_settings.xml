@@ -9,13 +9,15 @@
     <TextView
         android:id="@+id/Setting"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/hey_comic"
         android:layout_height="wrap_content"
-        android:text="Setting"
+        android:text="Change your settings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
-        android:textSize="40dp" />
+        app:layout_constraintBottom_toTopOf="@id/screen"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="32dp" />
 
 
     <LinearLayout
@@ -32,7 +34,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="GAMEMODE" />
+            android:fontFamily="@font/hey_comic"
+            android:text="GAMEMODE"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_red_dark"/>
         <View
 
             android:layout_width="match_parent"
@@ -52,6 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PVP"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
                 android:layout_weight="0" />
 
             <Button
@@ -59,6 +66,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PVE"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
                 android:layout_weight="0" />
         </LinearLayout>
 
@@ -66,7 +75,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="BOARD SIZE" />
+            android:text="BOARD SIZE"
+            android:textSize="20dp"
+            android:fontFamily="@font/hey_comic"
+            android:textColor="@android:color/holo_green_dark"/>
         <View
 
             android:layout_width="match_parent"
@@ -87,18 +99,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3x3"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
                 android:layout_weight="0" />
 
             <Button
                 android:id="@+id/board4x4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
                 android:text="4x4"
                 android:layout_weight="0" />
 
             <Button
                 android:id="@+id/board5x5"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
                 android:layout_height="wrap_content"
                 android:text="5x5"
                 android:layout_weight="0" />
@@ -107,7 +125,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Win Condition"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="20dp"
+            android:fontFamily="@font/hey_comic"
+            android:textColor="@android:color/holo_red_dark"/>
         <View
 
             android:layout_width="match_parent"
@@ -127,6 +148,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3 markers"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="15dp"
                 android:layout_weight="0" />
 
             <Button
@@ -134,6 +157,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4 markers"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="15dp"
                 android:layout_weight="0" />
 
             <Button
@@ -141,13 +166,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5 markers"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="15dp"
                 android:layout_weight="0" />
         </LinearLayout>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Player Markers"
-            android:gravity="center" />
+            android:gravity="center"
+            android:fontFamily="@font/hey_comic"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_green_dark"/>
         <View
 
             android:layout_width="match_parent"
@@ -168,13 +198,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="    XO    "
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
                 android:layout_weight="0" />
 
             <Button
                 android:id="@+id/customiconmarkers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="custom"
+                android:text="Custom"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
                 android:layout_weight="0" />
 
         </LinearLayout>
@@ -186,6 +220,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Return To Menu"
+        android:fontFamily="@font/hey_comic"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/screen"

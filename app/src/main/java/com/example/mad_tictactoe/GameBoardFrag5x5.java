@@ -217,8 +217,10 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 gamestate = new int[]{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}; //Reset Game
                 for (int i = 0; i < buttonList.length; i++) {
                     buttonList[i].setText("");
+                    buttonList[i].setBackgroundColor(0x000000);
                 }
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+                playerTurn.setTextColor(Color.parseColor("#7EFB02"));
                 playerOneActive = true;
                 botsTurn.setValue(false);
             }
@@ -242,6 +244,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 if (playerOneActive) {
                     if (playerVsPlayer) {
                         playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
+                        playerTurn.setTextColor(Color.parseColor("#FB0202"));
                     }
                     else {
                         playerTurn.setText("Bot's turn");
@@ -250,6 +253,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 }
                 else {
                     playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+                    playerTurn.setTextColor(Color.parseColor("#7EFB02"));
                     playerOneActive = !playerOneActive;
                 }
             }
@@ -274,15 +278,27 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
 
         if (playerVsPlayer) { //Player Mode
             if (playerOneActive) {
+                /* Need to add if wrapper to swap between default/custom markers and link to settings page
+                ((Button) view).setText("X");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                */
                 ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
                 playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
+                playerTurn.setTextColor(Color.parseColor("#7EFB02"));
 
                 gamestate[gameStatePointer] = 0;
                 undoMoves.push(gameStatePointer);
 
             } else {
+                /* Need to add if wrapper to swap between default/custom markers and link to settings page
+                ((Button) view).setText("O");
+                ((Button) view).setTextSize(30);
+                ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                */
                 ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerTwo.getValue().getMarkerID()));
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
+                playerTurn.setTextColor(Color.parseColor("#FB0202"));
 
                 gamestate[gameStatePointer] = 1;
                 undoMoves.push(gameStatePointer);
@@ -327,10 +343,15 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
 
         else { //Player vs AI mode
             if (playerOneActive) {
+                 /* Need to add if wrapper to swap between default/custom markers and link to settings page
                 ((Button) view).setText("X");
                 ((Button) view).setTextSize(30);
                 ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                */
+
+                ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
                 playerTurn.setText("Bot's turn");
+                playerTurn.setTextColor(Color.parseColor("#7EFB02"));
 
                 gamestate[gameStatePointer] = 0;
                 undoMoves.push(gameStatePointer);
@@ -340,6 +361,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 ((Button) view).setTextSize(30);
                 ((Button) view).setTextColor(Color.parseColor("#0000FF"));
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
+                playerTurn.setTextColor(Color.parseColor("#FB0202"));
 
                 gamestate[gameStatePointer] = 1;
                 undoMoves.push(gameStatePointer);
