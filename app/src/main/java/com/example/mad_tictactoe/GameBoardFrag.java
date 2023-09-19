@@ -207,7 +207,12 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 @Override
                 public void onTick(long l) {
                     p1Timer.setText(String.valueOf(counter));
+                    {
+                        p1Timer.setText(String.valueOf(counter));
+                    }
                     counter--;
+
+
                 }
                 @Override
                 public void onFinish() {
@@ -234,6 +239,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 ((Button) view).setText("X");
                 ((Button) view).setTextSize(30);
                 ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                counter = 30;       //resets timeer
                 playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
 
                 gamestate[gameStatePointer] = 0;
@@ -243,10 +249,12 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 ((Button) view).setText("O");
                 ((Button) view).setTextSize(30);
                 ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                counter = 30;       //resets timer
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
 
                 gamestate[gameStatePointer] = 1;
                 undoMoves.push(gameStatePointer);
+
 
             }
 
