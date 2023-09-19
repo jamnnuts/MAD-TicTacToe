@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".settings">
+
+    <TextView
+        android:id="@+id/Setting"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/hey_comic"
+        android:layout_height="wrap_content"
+        android:text="Change your settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/screen"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="32dp" />
+
+
+    <LinearLayout
+        android:id="@+id/screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/Setting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/return3">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/hey_comic"
+            android:text="GAMEMODE"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_red_dark"/>
+        <View
+
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="5dp"
+            android:background="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/PVP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PVP"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
+                android:layout_weight="0" />
+
+            <Button
+                android:id="@+id/PVE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PVE"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
+                android:layout_weight="0" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="BOARD SIZE"
+            android:textSize="20dp"
+            android:fontFamily="@font/hey_comic"
+            android:textColor="@android:color/holo_green_dark"/>
+        <View
+
+            android:layout_width="match_parent"
+
+            android:orientation="horizontal"
+            android:layout_height="5dp"
+            android:background="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/board3x3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3x3"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
+                android:layout_weight="0" />
+
+            <Button
+                android:id="@+id/board4x4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
+                android:text="4x4"
+                android:layout_weight="0" />
+
+            <Button
+                android:id="@+id/board5x5"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:text="5x5"
+                android:layout_weight="0" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Win Condition"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:fontFamily="@font/hey_comic"
+            android:textColor="@android:color/holo_red_dark"/>
+        <View
+
+            android:layout_width="match_parent"
+
+            android:orientation="horizontal"
+            android:layout_height="5dp"
+            android:background="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/win3x3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 markers"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="15dp"
+                android:layout_weight="0" />
+
+            <Button
+                android:id="@+id/win4x4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 markers"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="15dp"
+                android:layout_weight="0" />
+
+            <Button
+                android:id="@+id/win5x5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 markers"
+                android:fontFamily="@font/hey_comic"
+                android:textSize="15dp"
+                android:layout_weight="0" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/return3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return To Menu"
+        android:fontFamily="@font/hey_comic"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/screen"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

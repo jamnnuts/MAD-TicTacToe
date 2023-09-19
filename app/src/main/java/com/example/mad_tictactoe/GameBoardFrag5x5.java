@@ -12,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
@@ -57,6 +59,10 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
     private Stack<Integer> undoMoves = new Stack<Integer>();
     private int rounds;
     private boolean playerOneActive;
+
+    ArrayList avatarArray = new ArrayList<Integer>();
+
+    ArrayList markerArray = new ArrayList<Integer>();
 
     private boolean fourInARowWinCond = false;
     private boolean fiveInARowWinCond = false;
@@ -102,15 +108,48 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton5x5);
         Button resetButton = rootView.findViewById(R.id.resetButton5x5);
         Button undoButton = rootView.findViewById(R.id.Undo);
+        ImageView p1Avatar = rootView.findViewById(R.id.p1Avatar);
+        ImageView p2Avatar = rootView.findViewById(R.id.p2Avatar);
+        playerTurn = rootView.findViewById(R.id.Status);
+
         Random rand = new Random();
+
+        avatarArray.add(R.drawable.avatar1);
+        avatarArray.add(R.drawable.avatar2);
+        avatarArray.add(R.drawable.avatar3);
+        avatarArray.add(R.drawable.avatar4);
+        avatarArray.add(R.drawable.avatar5);
+        avatarArray.add(R.drawable.avatar6);
+
+        markerArray.add(R.drawable.marker1);
+        markerArray.add(R.drawable.marker2);
+        markerArray.add(R.drawable.marker3);
+        markerArray.add(R.drawable.marker4);
+        markerArray.add(R.drawable.marker5);
+        markerArray.add(R.drawable.marker6);
 
         playerTurn = rootView.findViewById(R.id.Status);
         botsTurn = new MutableLiveData<Boolean>();
         botsTurn.setValue(false);
 
+        p1Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerOne.getValue().getAvatarID()));
+        p2Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerTwo.getValue().getAvatarID()));
         playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
 
         gamestate = new int[]{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}; //Reset Game
+
+        if (sessionData.getGameMode() == 1) {
+            playerVsPlayer = false;
+        }
+        if (sessionData.getWinCondition() == 1) {
+            fourInARowWinCond = true;
+            fiveInARowWinCond = false;
+        }
+        else if (sessionData.getWinCondition() == 2) {
+            fourInARowWinCond = false;
+            fiveInARowWinCond = true;
+        }
+
 
         buttonList[0] = rootView.findViewById(R.id.button5x5_0);
         buttonList[1] = rootView.findViewById(R.id.button5x5_1);
@@ -178,8 +217,10 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 gamestate = new int[]{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}; //Reset Game
                 for (int i = 0; i < buttonList.length; i++) {
                     buttonList[i].setText("");
+                    buttonList[i].setBackgroundColor(0x000000);
                 }
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+                playerTurn.setTextColor(Color.parseColor("#7EFB02"));
                 playerOneActive = true;
                 botsTurn.setValue(false);
             }
@@ -203,6 +244,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 if (playerOneActive) {
                     if (playerVsPlayer) {
                         playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
+                        playerTurn.setTextColor(Color.parseColor("#FB0202"));
                     }
                     else {
                         playerTurn.setText("Bot's turn");
@@ -211,6 +253,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 }
                 else {
                     playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+                    playerTurn.setTextColor(Color.parseColor("#7EFB02"));
                     playerOneActive = !playerOneActive;
                 }
             }
@@ -235,19 +278,32 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
 
         if (playerVsPlayer) { //Player Mode
             if (playerOneActive) {
-                ((Button) view).setText("X");
-                ((Button) view).setTextSize(30);
-                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                if (sessionData.playerOne.getValue().getMarkerID() != 100) {
+                    ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
+                }
+                else {
+                    ((Button) view).setText("X");
+                    ((Button) view).setTextSize(30);
+                    ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                }
                 playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
+                playerTurn.setTextColor(Color.parseColor("#7EFB02"));
 
                 gamestate[gameStatePointer] = 0;
                 undoMoves.push(gameStatePointer);
 
             } else {
-                ((Button) view).setText("O");
-                ((Button) view).setTextSize(30);
-                ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                if (sessionData.playerTwo.getValue().getMarkerID() != 100) {
+                    ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerTwo.getValue().getMarkerID()));
+                }
+                else {
+                    ((Button) view).setText("0");
+                    ((Button) view).setTextSize(30);
+                    ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+                }
+
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
+                playerTurn.setTextColor(Color.parseColor("#FB0202"));
 
                 gamestate[gameStatePointer] = 1;
                 undoMoves.push(gameStatePointer);
@@ -292,10 +348,16 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
 
         else { //Player vs AI mode
             if (playerOneActive) {
-                ((Button) view).setText("X");
-                ((Button) view).setTextSize(30);
-                ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                if (sessionData.playerOne.getValue().getMarkerID() != 100) {
+                    ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
+                }
+                else {
+                    ((Button) view).setText("X");
+                    ((Button) view).setTextSize(30);
+                    ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+                }
                 playerTurn.setText("Bot's turn");
+                playerTurn.setTextColor(Color.parseColor("#7EFB02"));
 
                 gamestate[gameStatePointer] = 0;
                 undoMoves.push(gameStatePointer);
@@ -305,6 +367,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 ((Button) view).setTextSize(30);
                 ((Button) view).setTextColor(Color.parseColor("#0000FF"));
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
+                playerTurn.setTextColor(Color.parseColor("#FB0202"));
 
                 gamestate[gameStatePointer] = 1;
                 undoMoves.push(gameStatePointer);

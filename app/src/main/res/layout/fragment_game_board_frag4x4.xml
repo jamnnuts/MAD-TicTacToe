@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Return"
+            android:fontFamily="@font/hey_comic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/VertGuide50"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,34 +38,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reset"
+            android:fontFamily="@font/hey_comic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/VertGuide50"
             app:layout_constraintTop_toTopOf="@id/HorizGuide80" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/HorizGuide20"
+    <Button
+        android:id="@+id/Undo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Undo Move"
+        android:fontFamily="@font/hey_comic"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatarAndStatus" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id ="@+id/avatarAndStatus"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.20" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/Undo">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/horizGuide11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.11" />
-
-        <Button
-            android:id="@+id/Undo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Undo Move"
-            app:layout_constraintBottom_toTopOf="@+id/HorizGuide20"
-            app:layout_constraintEnd_toStartOf="@+id/VertGuide50"
+        <ImageView
+            android:id="@+id/p1Avatar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:layout_constraintBottom_toTopOf="@id/horizGuide11"
+            app:layout_constraintEnd_toStartOf="@id/Status"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/horizGuide11" />
+            app:layout_constraintTop_toTopOf="parent"
+                   
         <TextView
             android:id="@+id/timer1"
             android:layout_width="wrap_content"
@@ -75,18 +85,31 @@
             app:layout_constraintStart_toEndOf="@+id/Undo"
             app:layout_constraintTop_toTopOf="@+id/horizGuide11" />
 
-
         <TextView
             android:id="@+id/Status"
             android:layout_width="wrap_content"
+            android:textColor="@android:color/holo_blue_dark"
             android:layout_height="wrap_content"
-            android:text="Player X's Turn"
+            android:fontFamily="@font/hey_comic"
+            android:text="Start!"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/horizGuide11"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/p2Avatar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:layout_constraintBottom_toTopOf="@id/horizGuide11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/Status"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/avatar1" />
+
+    </LinearLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,7 +119,7 @@
         app:layout_constraintBottom_toTopOf="@id/HorizGuide80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/HorizGuide20">
+        app:layout_constraintTop_toBottomOf="@id/Undo">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VertGridLine27"
@@ -113,11 +136,11 @@
             app:layout_constraintGuide_percent="0.75" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/VertGridLine66"
+            android:id="@+id/VertGridLine50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="205dp" />
+            app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/HorizGridLine72"
@@ -166,7 +189,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
-            app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine50"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@android:color/transparent" />
@@ -177,7 +200,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/horizGridLine28"
             app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
-            app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine50"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@android:color/transparent" />
 
@@ -206,7 +229,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
-            app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine50"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
             app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
             android:background="@android:color/transparent" />
@@ -217,7 +240,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine50"
             app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
-            app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine50"
             app:layout_constraintTop_toTopOf="@+id/horizGridLine28"
             android:background="@android:color/transparent" />
 
@@ -246,7 +269,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
-            app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine50"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
             android:background="@android:color/transparent" />
@@ -257,7 +280,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/HorizGridLine72"
             app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
-            app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine50"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine50"
             android:background="@android:color/transparent" />
 
@@ -286,7 +309,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/VertGridLine66"
+            app:layout_constraintEnd_toEndOf="@+id/VertGridLine50"
             app:layout_constraintStart_toStartOf="@+id/VertGridLine27"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
             android:background="@android:color/transparent" />
@@ -297,7 +320,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/vertGridLine75"
-            app:layout_constraintStart_toStartOf="@+id/VertGridLine66"
+            app:layout_constraintStart_toStartOf="@+id/VertGridLine50"
             app:layout_constraintTop_toTopOf="@+id/HorizGridLine72"
             android:background="@android:color/transparent" />
 
