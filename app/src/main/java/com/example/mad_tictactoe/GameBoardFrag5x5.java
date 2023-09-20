@@ -37,6 +37,8 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
     private String mParam1;
     private String mParam2;
 
+    public static final String occupiedTag = "Occupied";
+    public static final String emptyTag = "Empty";
     public static final int[][] winningPositions5x5 = {{0,1,2}, {1,2,3}, {2,3,4}, {5,6,7}, {6,7,8}, {7,8,9}, {10,11,12},
             {11,12,13}, {12,13,14}, {15,16,17}, {16,17,18}, {17,18,19}, {20,21,22}, {21,22,23}, {22,23,24}, {0,5,10},
             {5,10,15}, {10,15,20}, {1,6,11}, {6,11,16}, {11,16,21}, {2,7,12}, {7,12,17}, {12,17,22}, {3,8,13},
@@ -63,9 +65,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
     private boolean playerOneActive;
     private int counter = 30;
     private int startTimer = 0;
-
     private MutableLiveData<Boolean> forfeitTimerWin;
-
 
     ArrayList avatarArray = new ArrayList<Integer>();
 
@@ -188,6 +188,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
         buttonList[24] = rootView.findViewById(R.id.button5x5_24);
 
         for (int i = 0; i < buttonList.length; i++) {
+            buttonList[i].setTag(emptyTag);
             buttonList[i].setOnClickListener(this);
         }
         playerOneActive = true;
@@ -216,6 +217,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startTimer = 0;
                 sessionData.setClickedFragment(1);
             }
         });
@@ -228,6 +230,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 for (int i = 0; i < buttonList.length; i++) {
                     buttonList[i].setText("");
                     buttonList[i].setBackgroundColor(0x000000);
+                    buttonList[i].setTag(emptyTag);
                 }
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
                 playerTurn.setTextColor(Color.parseColor("#7EFB02"));
@@ -251,9 +254,11 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
 
                 int lastMove = undoMoves.pop();
                 buttonList[lastMove].setText("");
+                buttonList[lastMove].setTag(emptyTag);
+                buttonList[lastMove].setBackgroundColor(Color.TRANSPARENT);
                 gamestate[lastMove] = 2;
                 rounds--;
-                setTimer();
+                counter = 30;
 
                 if (playerOneActive) {
                     if (playerVsPlayer) {
@@ -313,7 +318,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         SessionDataViewModel sessionData = new ViewModelProvider(getActivity()).get(SessionDataViewModel.class);
 
-        if (!((Button) view).getText().toString().equals("")) {
+        if (!((Button) view).getText().toString().equals("") || ((Button) view).getTag().equals(occupiedTag)) {
             return;
         } else if (checkWinner() || forfeitTimerWin.getValue()) {
             return;
@@ -331,6 +336,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
             if (playerOneActive) {
                 if (sessionData.playerOne.getValue().getMarkerID() != 100) {
                     ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
+                    ((Button)view).setTag(occupiedTag);
                 }
                 else {
                     ((Button) view).setText("X");
@@ -346,6 +352,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
             } else {
                 if (sessionData.playerTwo.getValue().getMarkerID() != 100) {
                     ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerTwo.getValue().getMarkerID()));
+                    ((Button)view).setTag(occupiedTag);
                 }
                 else {
                     ((Button) view).setText("0");
@@ -401,6 +408,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
             if (playerOneActive) {
                 if (sessionData.playerOne.getValue().getMarkerID() != 100) {
                     ((Button)view).setBackgroundResource((Integer) markerArray.get(sessionData.playerOne.getValue().getMarkerID()));
+                    ((Button)view).setTag(occupiedTag);
                 }
                 else {
                     ((Button) view).setText("X");
@@ -501,7 +509,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
             new CountDownTimer(30000, 1000) {
                 @Override
                 public void onTick(long l) {
-                    if (checkWinner()) {
+                    if (checkWinner() || startTimer == 0) {
                         this.cancel();
                     }
                     p1Timer.setText(String.valueOf(counter));
