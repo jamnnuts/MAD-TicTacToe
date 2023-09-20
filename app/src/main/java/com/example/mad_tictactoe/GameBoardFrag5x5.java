@@ -222,7 +222,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startTimer = 0;
+                resetButton.performClick();
                 sessionData.setClickedFragment(1);
             }
         });
@@ -245,6 +245,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 startTimer = 0;
                 counter = 30;
                 available_moves = 25;
+                available_move_counter.setText((Integer.toString((available_moves))));
             }
         });
 
@@ -265,6 +266,8 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 gamestate[lastMove] = 2;
                 rounds--;
                 counter = 30;
+                available_moves++;
+                available_move_counter.setText((Integer.toString((available_moves))));
 
                 if (playerOneActive) {
                     if (playerVsPlayer) {
@@ -338,6 +341,7 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
 
         counter = 30;     //resets timeer
         available_moves--;
+        available_move_counter.setText((Integer.toString((available_moves))));
 
         if (playerVsPlayer) { //Player Mode
             if (playerOneActive) {
@@ -352,7 +356,6 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 }
                 playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
                 playerTurn.setTextColor(Color.parseColor("#7EFB02"));
-                available_move_counter.setText(Integer.toString(available_moves));
                 gamestate[gameStatePointer] = 0;
                 undoMoves.push(gameStatePointer);
 
@@ -369,7 +372,6 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
 
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
                 playerTurn.setTextColor(Color.parseColor("#FB0202"));
-                available_move_counter.setText(Integer.toString(available_moves));
                 gamestate[gameStatePointer] = 1;
                 undoMoves.push(gameStatePointer);
 
@@ -424,7 +426,6 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 }
                 playerTurn.setText("Bot's turn");
                 playerTurn.setTextColor(Color.parseColor("#7EFB02"));
-                available_move_counter.setText(Integer.toString(available_moves));
                 gamestate[gameStatePointer] = 0;
                 undoMoves.push(gameStatePointer);
 
@@ -434,7 +435,6 @@ public class GameBoardFrag5x5 extends Fragment implements View.OnClickListener{
                 ((Button) view).setTextColor(Color.parseColor("#0000FF"));
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
                 playerTurn.setTextColor(Color.parseColor("#FB0202"));
-                available_move_counter.setText(Integer.toString(available_moves));
                 gamestate[gameStatePointer] = 1;
                 undoMoves.push(gameStatePointer);
 
