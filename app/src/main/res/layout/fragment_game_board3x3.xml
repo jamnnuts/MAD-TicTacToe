@@ -55,6 +55,31 @@
             app:layout_constraintBottom_toTopOf="@id/gameBoard"
             />
 
+        <LinearLayout
+            android:id="@+id/moves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/UndoButton"
+            app:layout_constraintEnd_toStartOf="@id/timer1"
+            app:layout_constraintTop_toBottomOf="@id/displayLinearLayout"
+            app:layout_constraintBottom_toTopOf="@id/gameBoard">
+
+            <TextView
+                android:id="@+id/availablemoves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/totalmoves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" / 9"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
         <TextView
             android:id="@+id/timer1"
             android:layout_width="wrap_content"

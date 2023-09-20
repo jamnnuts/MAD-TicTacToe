@@ -50,10 +50,13 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
     private Button[] buttonList = new Button[9];
     private TextView playerTurn;
     private TextView p1Timer;
+    private TextView available_move_counter;
     private Stack<Integer> undoMoves = new Stack<Integer>();
     private int rounds;
     private int counter = 30;
     private int startTimer = 0;
+
+    private int available_moves = 9;
 
     private MutableLiveData<Boolean> forfeitTimerWin;
     private boolean playerVsPlayer = true; //Activation boolean for bot game or playervsplayer game **REMEMBER TO CHANGE WHEN SETTINGS PAGE IS IMPLEMENTED
@@ -102,11 +105,15 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         Button returnButton = rootView.findViewById(R.id.returnToMenuButton3x3);
         Button resetButton = rootView.findViewById(R.id.resetButton3x3);
         Button undoButton = rootView.findViewById(R.id.UndoButton);
+
+
+
         p1Timer = rootView.findViewById(R.id.timer1);
         ImageView p1Avatar = rootView.findViewById(R.id.p1Avatar);
         ImageView p2Avatar = rootView.findViewById(R.id.p2Avatar);
         Random rand = new Random();
-      
+
+        available_move_counter = rootView.findViewById(R.id.availablemoves);
         playerTurn = rootView.findViewById(R.id.Status);
         botsTurn = new MutableLiveData<Boolean>();
         forfeitTimerWin = new MutableLiveData<Boolean>();
@@ -130,6 +137,8 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
         p1Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerOne.getValue().getAvatarID()));
         p2Avatar.setImageResource((Integer) avatarArray.get(sessionData.playerTwo.getValue().getAvatarID()));
         playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() +"'s turn");
+
+
 
         gamestate = new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2}; //Reset Game
 
@@ -202,6 +211,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 forfeitTimerWin.setValue(false);
                 startTimer = 0;
                 counter = 30;
+                available_moves = 9;
             }
         });
 
@@ -238,6 +248,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                     playerTurn.setTextColor(Color.parseColor("#7EFB02"));
                     playerOneActive = !playerOneActive;
                 }
+
             }
         });
 
@@ -292,7 +303,9 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
         int gameStatePointer = Integer.parseInt(buttonID.substring(10, buttonID.length()));
 
+
         counter = 30;     //resets timeer
+        available_moves--;
 
         if (playerVsPlayer) { //Player Mode
             if (playerOneActive) {
@@ -304,11 +317,13 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                     ((Button) view).setText("X");
                     ((Button) view).setTextSize(30);
                     ((Button) view).setTextColor(Color.parseColor("#FFA500"));
+
                 }
+
 
                 playerTurn.setText(sessionData.playerTwo.getValue().getPlayerName().toString() + "'s turn");
                 playerTurn.setTextColor(Color.parseColor("#7EFB02"));
-
+                available_move_counter.setText(Integer.toString(available_moves));
                 gamestate[gameStatePointer] = 0;
                 undoMoves.push(gameStatePointer);
 
@@ -321,6 +336,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                     ((Button) view).setText("0");
                     ((Button) view).setTextSize(30);
                     ((Button) view).setTextColor(Color.parseColor("#0000FF"));
+
                 }
               
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
@@ -328,10 +344,11 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
                 gamestate[gameStatePointer] = 1;
                 undoMoves.push(gameStatePointer);
-
+                available_move_counter.setText(Integer.toString(available_moves));
 
             }
             rounds++;
+
 
             if (checkWinner()) {
                 if (playerOneActive) {
@@ -381,6 +398,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
 
                 playerTurn.setText("Bot's turn");
                 playerTurn.setTextColor(Color.parseColor("#7EFB02"));
+                available_move_counter.setText(Integer.toString(available_moves));
 
                 gamestate[gameStatePointer] = 0;
                 undoMoves.push(gameStatePointer);
@@ -391,6 +409,7 @@ public class GameBoardFrag extends Fragment implements View.OnClickListener {
                 ((Button) view).setTextColor(Color.parseColor("#0000FF"));
                 playerTurn.setText(sessionData.playerOne.getValue().getPlayerName().toString() + "'s turn");
                 playerTurn.setTextColor(Color.parseColor("#FB0202"));
+                available_move_counter.setText(Integer.toString(available_moves));
 
 
                 gamestate[gameStatePointer] = 1;
