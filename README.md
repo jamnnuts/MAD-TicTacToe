@@ -109,8 +109,6 @@ cells are arranged, and player markers ("X," "O," or custom icons) are displayed
 prefer a larger challenge.
 - fragment_game_board_frag5x5.xml: This XML file defines the layout for the 5x5 game board, offering an even larger grid for players who seek an extended and
 strategic gaming experience.
-- fragment_leaderboard.xml: In this XML file, you'll find the layout for the leaderboard screen. It displays high scores and achievements, allowing users to
-show they compare to other players.
 - fragment_main_menu.xml: The app's main menu is defined in this XML file. It serves as the entry point for users and provides options for selecting game
 modes, accessing settings, and navigating to other parts of the app.
 - fragment_player_creation.xml: When users create or edit their profiles and choose avatars, this XML file controls the layout and options.
@@ -142,8 +140,6 @@ choosing avatars and customizing their names. It ensures that player identity is
 fragments and activities within the app. This class could be crucial in maintaining data consistency and providing a centralized data source.
 - StatFrag.java: StatFrag is likely associated with the statistics fragment. It may handle the display of detailed gameplay statistics, such as wins, losses,
 draws, and win percentages. The mention of fixing an issue with win percentage suggests that this class ensures accurate stat tracking.
-- leaderboard.java: This Java file likely represents the leaderboard component of the app. It could manage the retrieval and display of high scores and
-achievements, allowing users to compare their performance with other players.
 - settings.java: This java file is associated with the app's settings screen, where users can customize various aspects of their gaming experience. It could
 handle user preferences related to the game, such as board size, win conditions, and player markers.
 
