@@ -2,13 +2,14 @@
 
 This Android app is a feature-rich Tic-Tac-Toe game developed as part of the "Mobile Application Development (COMP2008)" course, Assignment 1. This assignment 
 aims to create a fully functional and customizable Tic-Tac-Toe game for Android. This game demonstrates our understanding of various aspects of mobile app 
-development, including user interface design, fragmentation, game logic, and recycler view.
+development, including user interface design, fragmentation and game logic.
 
 # Table of Contents: 
 1. Introduction / Game Description
-2. Features
-3. Getting started
-4. Usage
+2. Contributions
+3. Features
+4. Getting started
+5. Usage
 
 # Introduction / Game Description
 As part of the assignment, This is a Tic-Tac-Toe game, a classic 2-player game played on a game board, either 3x3, 4x4 or 5x5 grid. In this game, each player
@@ -19,8 +20,13 @@ Despite its simplicity, Tic-Tac-Toe is a game that offers insights into game the
 teach concepts such as dominance, strategy, and decision-making, making it a foundational game for understanding more complex games and algorithms, including
 those in the field of artificial intelligence.
 
-As this was a group assessment, this app was developed by four members. Each member has contributed equally and demonstrated their understanding of how the app
-implementing all the features required for the MAD assignment will look like this.
+# Contributions
+
+We're proud to acknowledge that this Tic-Tac-Toe Android app results from collaborative efforts by four dedicated team members: Jacob Arvino, Robin Fu, Alex 
+Chan, and Malaika Noor. Each member has made valuable contributions to the development of this app, ensuring that all required features for the Mobile 
+Application Development (MAD) assignments were successfully implemented. Each member has contributed equally and demonstrated their understanding of 
+implementing the required features for the MAD assignment. Our collaborative efforts have resulted in a feature-rich Tic-Tac-Toe app that we proudly present. 
+We hope you enjoy using it as much as we enjoyed developing it.
 
 # Features
 
@@ -95,6 +101,8 @@ Here's an overview of the XML files included in the project, located in the MAD-
 
 - activity_main.xml: This XML file is the main layout for the app's activity. It serves as the container for displaying different fragments and UI
 components as users navigate through the app.
+- avatar_layout.xml: This XML file displays avatar options to users during player profile creation. Users can choose their preferred avatars from this
+selection to represent themselves in the game.
 - fragment_game_board3x3.xml: This XML file defines the layout for the 3x3 game board, the central element of the Tic-Tac-Toe game. It specifies how the grid
 cells are arranged, and player markers ("X," "O," or custom icons) are displayed within these cells.
 - fragment_game_board_frag4x4.xml: Similar to the 3x3 board, this XML file defines the layout for the 4x4 game board, expanding the game's grid for those who
@@ -107,12 +115,18 @@ show they compare to other players.
 modes, accessing settings, and navigating to other parts of the app.
 - fragment_player_creation.xml: When users create or edit their profiles and choose avatars, this XML file controls the layout and options.
 It's where users can personalize their gaming identity.
+- fragment_settings.xml: This XML file is responsible for the layout and options presented in the settings screen. It allows users to customize various aspects
+of the game, such as board size, win conditions, and player markers, to match their preferences.
 - fragment_stat.xml: This XML file is responsible for the layout of the statistics screen, where users can view detailed gameplay statistics, including their
 total games played, wins, losses, draws, and win percentages.
 
 To provide a deeper understanding of this Tic-Tac-Toe Android app's functionality, here's an overview of the Java files included in the project, located in the 
 app/src/main/java/com/example/mad_tictactoe directory:
 
+- AvatarAdapter.java: his Java file corresponds to an adapter responsible for managing and displaying avatars within the app's user interface. It plays
+a crucial role in presenting avatar options to users during player profile creation.
+- AvatarVH.java: The AvatarVH.java file represents an Avatar View Holder class designed to efficiently manage and display avatar images. It's an integral
+part of the avatar selection process, ensuring a smooth and user-friendly experience.
 - GameBoardFrag.java, GameBoardFrag4x4.java, and GameBoardFrag5x5.java: These Java files correspond to different gameboard fragments. Each implements a
 specific board size (3x3, 4x4, or 5x5) and handles the logic and user interface for the respective game board. These classes manage the placement of markers,
 track game progress, and handle player interactions for their respective board sizes.
@@ -130,6 +144,9 @@ fragments and activities within the app. This class could be crucial in maintain
 draws, and win percentages. The mention of fixing an issue with win percentage suggests that this class ensures accurate stat tracking.
 - leaderboard.java: This Java file likely represents the leaderboard component of the app. It could manage the retrieval and display of high scores and
 achievements, allowing users to compare their performance with other players.
+- settings.java: This java file is associated with the app's settings screen, where users can customize various aspects of their gaming experience. It could
+handle user preferences related to the game, such as board size, win conditions, and player markers.
+
 
 # Usage
 
@@ -169,4 +186,4 @@ You're ready to run the app with the project open and an emulator (or physical d
 - Select the target device (either your AVD or connected physical device).
 - Click "OK" to build and launch the app.
 
-Now the app is running on your device. You can explore the app and enjoy it.
+Now, the app is running on your device. You can explore the app and enjoy it.
