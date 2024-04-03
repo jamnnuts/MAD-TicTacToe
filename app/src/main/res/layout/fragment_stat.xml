@@ -5,40 +5,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/statLL"
+    <TextView
+        android:id="@+id/playerStats"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:text="Player stats"
+        android:textSize="64dp"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/hey_comic"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toTopOf="@id/playerCreation1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" >
-
-        <TextView
-            android:id="@+id/playerStats"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Player stats"
-            android:textSize="32dp"
-            android:gravity="center"
-            android:fontFamily="@font/hey_comic"
-            android:textColor="@android:color/holo_blue_dark"
-            app:layout_constraintBottom_toTopOf="@id/playerCreation1"
-            app:layout_constraintStart_toStartOf="@id/statLL"
-            app:layout_constraintEnd_toEndOf="@id/statLL"
-            app:layout_constraintTop_toTopOf="@id/statLL"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
         <GridLayout
+            android:id="@+id/playerCreation1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/playerCreation1"
             android:layout_marginBottom="10dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/playerCreation2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/playerStats">
+            app:layout_constraintEnd_toStartOf="@id/avatar1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/playerStats">
 
             <TextView
                 android:id="@+id/playerName1"
@@ -46,18 +35,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/hey_comic"
-                android:textSize="25dp"
+                android:text="(Player name)"
                 android:textColor="@android:color/holo_red_dark"
-                android:text="(Player name)" />
-
-            <ImageView
-                android:id="@+id/avatar1"
-                android:layout_width="126dp"
-                android:layout_height="126dp"
-                android:layout_row="0"
-                android:layout_rowSpan="6"
-                android:layout_column="2"
-                tools:srcCompat="@drawable/avatar1" />
+                android:textSize="25dp" />
 
             <TextView
                 android:id="@+id/winText1"
@@ -67,8 +47,8 @@
                 android:layout_column="0"
                 android:layout_weight="1"
                 android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
-                android:text="Wins: " />
+                android:text="Wins: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/winValue1"
@@ -84,8 +64,8 @@
                 android:layout_row="2"
                 android:layout_column="0"
                 android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
-                android:text="Losses: " />
+                android:text="Losses: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/lossValue1"
@@ -101,15 +81,15 @@
                 android:layout_row="3"
                 android:layout_column="0"
                 android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
-                android:text="Draws: " />
+                android:text="Draws: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/drawValue1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="3"
-                android:layout_column="1"/>
+                android:layout_column="1" />
 
             <TextView
                 android:id="@+id/gamesPlayedText1"
@@ -118,70 +98,74 @@
                 android:layout_row="4"
                 android:layout_column="0"
                 android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
-                android:text="Games played: " />
+                android:text="Games played: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/gamesPlayedValue1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="4"
-                android:layout_column="1"/>
+                android:layout_column="1" />
 
             <TextView
                 android:id="@+id/winPercentageText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="5"
-                android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
                 android:layout_column="0"
-                android:text="Win %: " />
+                android:fontFamily="@font/hey_comic"
+                android:text="Win %: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/winPercentageValue1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="5"
-                android:layout_column="1"/>
+                android:layout_column="1" />
 
         </GridLayout>
+
+        <ImageView
+            android:id="@+id/avatar1"
+            android:layout_width="120dp"
+            android:layout_height="126dp"
+            tools:srcCompat="@drawable/avatar1"
+            app:layout_constraintBottom_toTopOf="@id/playerCreation2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/playerCreation1"
+            app:layout_constraintTop_toBottomOf="@id/playerStats"
+            tools:ignore="ContentDescription" />
+
+
         <GridLayout
+            android:id="@+id/playerCreation2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/playerCreation2"
+            app:layout_constraintBottom_toTopOf="@id/returnButton"
+            app:layout_constraintEnd_toStartOf="@id/avatar2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/playerCreation1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/playerCreation1">
 
             <TextView
                 android:id="@+id/playerName2"
-                android:fontFamily="@font/hey_comic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:fontFamily="@font/hey_comic"
+                android:text="(Player name)"
                 android:textColor="@android:color/holo_green_dark"
-                android:text="(Player name)" />
-
-            <ImageView
-                android:id="@+id/avatar2"
-                android:layout_width="126dp"
-                android:layout_height="126dp"
-                android:layout_row="0"
-                android:layout_column="2"
-                android:layout_rowSpan="6"
-                tools:srcCompat="@drawable/avatar2" />
+                android:textSize="25dp" />
 
             <TextView
                 android:id="@+id/winText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="1"
-                android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
                 android:layout_column="0"
-                android:text="Wins: " />
+                android:fontFamily="@font/hey_comic"
+                android:text="Wins: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/winValue2"
@@ -195,10 +179,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="2"
-                android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
                 android:layout_column="0"
-                android:text="Losses: " />
+                android:fontFamily="@font/hey_comic"
+                android:text="Losses: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/lossValue2"
@@ -212,66 +196,75 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="3"
-                android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
                 android:layout_column="0"
-                android:text="Draws: " />
+                android:fontFamily="@font/hey_comic"
+                android:text="Draws: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/drawValue2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="3"
-                android:layout_column="1"/>
+                android:layout_column="1" />
 
             <TextView
                 android:id="@+id/gamesPlayedText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="4"
-                android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
                 android:layout_column="0"
-                android:text="Games played: " />
+                android:fontFamily="@font/hey_comic"
+                android:text="Games played: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/gamesPlayedValue2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="4"
-                android:layout_column="1"/>
+                android:layout_column="1" />
 
             <TextView
                 android:id="@+id/winPercentageText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="5"
-                android:fontFamily="@font/hey_comic"
-                android:textSize="20dp"
                 android:layout_column="0"
-                android:text="Win %: " />
+                android:fontFamily="@font/hey_comic"
+                android:text="Win %: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/winPercentageValue2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="5"
-                android:layout_column="1"/>
+                android:layout_column="1" />
 
         </GridLayout>
 
+    <ImageView
+        android:id="@+id/avatar2"
+        android:layout_width="120dp"
+        android:layout_height="126dp"
+        tools:srcCompat="@drawable/avatar2"
+        app:layout_constraintBottom_toTopOf="@id/returnButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/playerCreation2"
+        app:layout_constraintTop_toBottomOf="@id/playerCreation1"
+        tools:ignore="ContentDescription" />
+
         <Button
             android:id="@+id/returnButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Return"
             android:fontFamily="@font/hey_comic"
-            android:textSize="20dp"
+            android:text="Return"
+            android:textSize="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/playerCreation2"/>
-
-    </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/playerCreation2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
